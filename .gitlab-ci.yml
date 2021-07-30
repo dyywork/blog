@@ -1,0 +1,21 @@
+# 选择你要使用的 docker 镜像
+image: node:14-buster
+
+pages:
+  # 每当 push 到 main 分支时触发部署
+  only:
+    - main
+
+  # 缓存 node_modules
+  cache:
+    paths:
+      - node_modules/
+
+  # 安装依赖并运行构建脚本
+  script:
+    - yarn --frozen-lockfile
+    - yarn docs:build --dest public
+
+  artifacts:
+    paths:
+      - public
