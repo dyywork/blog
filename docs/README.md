@@ -1,11 +1,13 @@
-# Hello World
-[url](js/README.md)
+---
+home: true
+heroImage: ./img/one.jpg
+actions:
+- text: 快速上手
+  link: /js/README.md
+  type: primary
+- text: 项目简介
+  link: /guide/
+  type: secondary
+---
 
-## test
 
-```js
-function() {
-    console.log(1)
-}
-```
-### [js](js/README.md)

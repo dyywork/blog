@@ -1,10 +1,10 @@
 module.exports = {
     lang: 'zh-CN',
     title: '莫名点',
-    description: '这是我的第一个 VuePress 站点',
+    description: '问题汇总',
 
     themeConfig: {
-        logo: 'https://vuejs.org/images/logo.png',
+        home: '/',
         navbar: [
             {text: '主页', link: '/'},
             {text: 'js', link: '/js/'},
@@ -12,10 +12,10 @@ module.exports = {
         sidebar: [
             // SidebarItem
             {
-                text: 'Foo',
+                text: 'JS问题',
                 link: '/js/README.md',
-            },
-        ],
+            }
+        ]
     },
     base: '/blog/'
 }
