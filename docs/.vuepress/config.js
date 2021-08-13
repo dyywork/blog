@@ -16,10 +16,12 @@ module.exports = {
                     {
                         text: '垃圾回收',
                         link: '/js/README.md',
+                        activeMatch: '/',
                     },
                     {
                         text: '创建对象',
                         link: '/js/Object.md',
+                        activeMatch: '/',
                     },
                 ]
             },
@@ -28,14 +30,15 @@ module.exports = {
             // SidebarItem
             {
                 text: 'JS问题',
+                link: '/js',
                 children: [
                     {
                         text: '垃圾回收',
-                        link: '/js/README.md',
+                        link: '/README.md',
                     },
                     {
                         text: '创建对象',
-                        link: '/js/Object.md',
+                        link: '/Object.md',
                     },
                 ]
             }
