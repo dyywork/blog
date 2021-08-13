@@ -25,7 +25,6 @@ module.exports = {
             },
         ],
         sidebar: [
-            // SidebarItem
             {
                 text: 'JS问题',
                 children: [
