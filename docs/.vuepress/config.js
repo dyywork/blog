@@ -6,10 +6,10 @@ module.exports = {
     themeConfig: {
         home: '/',
         navbar: [
-            {
-                text: '主页',
-                link: '/README.md'
-            },
+            // {
+            //     text: '主页',
+            //     link: '/README.md'
+            // },
             // {
             //     text: 'js问题',
             //     children: [
