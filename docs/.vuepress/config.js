@@ -30,15 +30,14 @@ module.exports = {
             // SidebarItem
             {
                 text: 'JS问题',
-                link: '/js',
                 children: [
                     {
                         text: '垃圾回收',
-                        link: '/README.md',
+                        link: '/js/README.md',
                     },
                     {
                         text: '创建对象',
-                        link: '/Object.md',
+                        link: '/js/Object.md',
                     },
                 ]
             }
