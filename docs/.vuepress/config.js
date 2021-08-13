@@ -11,30 +11,18 @@ module.exports = {
                 link: '/'
             },
             {
-                text: '垃圾回收',
-                link: '/js/README.md',
-                activeMatch: '/',
+                text: 'js问题',
+                children: [
+                    {
+                        text: '垃圾回收',
+                        link: '/js/README.md',
+                    },
+                    {
+                        text: '创建对象',
+                        link: '/js/OBJECTREADME.md',
+                    },
+                ]
             },
-            {
-                text: '创建对象',
-                link: '/js/Object.md',
-                activeMatch: '/',
-            },
-            // {
-            //     text: 'js问题',
-            //     children: [
-            //         {
-            //             text: '垃圾回收',
-            //             link: '/js/README.md',
-            //             activeMatch: '/',
-            //         },
-            //         {
-            //             text: '创建对象',
-            //             link: '/js/Object.md',
-            //             activeMatch: '/',
-            //         },
-            //     ]
-            // },
         ],
         sidebar: [
             // SidebarItem
@@ -47,7 +35,7 @@ module.exports = {
             //         },
             //         {
             //             text: '创建对象',
-            //             link: '/js/Object.md',
+            //             link: '/js/OBJECTREADME.md',
             //         },
             //     ]
             // }
@@ -57,7 +45,7 @@ module.exports = {
             },
             {
                 text: '创建对象',
-                link: '/js/Object.md',
+                link: '/js/OBJECTREADME.md',
             },
         ]
     },
