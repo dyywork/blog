@@ -8,7 +8,7 @@ module.exports = {
         navbar: [
             {
                 text: '主页',
-                link: '/'
+                link: '/README.md'
             },
             // {
             //     text: 'js问题',
