@@ -6,26 +6,10 @@ module.exports = {
     themeConfig: {
         home: '/',
         navbar: [
-            // {
-            //     text: '主页',
-            //     link: '/README.md'
-            // },
-            // {
-            //     text: 'js问题',
-            //     children: [
-            //         {
-            //             text: '垃圾回收',
-            //             link: '/js/README.md',
-            //         },
-            //         {
-            //             text: '创建对象',
-            //             link: '/js/OBJECTREADME.md',
-            //         },
-            //     ]
-            // },
+            {text: '主页', link: '/'},
+            {text: 'js', link: '/js/'},
         ],
         sidebar: [
-            // SidebarItem
             {
                 text: 'JS问题',
                 children: [
