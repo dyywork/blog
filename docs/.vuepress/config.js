@@ -28,19 +28,27 @@ module.exports = {
         ],
         sidebar: [
             // SidebarItem
+            // {
+            //     text: 'JS问题',
+            //     children: [
+            //         {
+            //             text: '垃圾回收',
+            //             link: '/js/README.md',
+            //         },
+            //         {
+            //             text: '创建对象',
+            //             link: '/js/Object.md',
+            //         },
+            //     ]
+            // }
             {
-                text: 'JS问题',
-                children: [
-                    {
-                        text: '垃圾回收',
-                        link: '/js/README.md',
-                    },
-                    {
-                        text: '创建对象',
-                        link: '/js/Object.md',
-                    },
-                ]
-            }
+                text: '垃圾回收',
+                link: '/js/README.md',
+            },
+            {
+                text: '创建对象',
+                link: '/js/Object.md',
+            },
         ]
     },
     base: '/blog/'
