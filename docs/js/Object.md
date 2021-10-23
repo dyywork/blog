@@ -95,5 +95,6 @@ function Person(name, age, job) {
 
 ## 6.寄生构造函数模式
 ```javascript
-test
+test 
+dev
 ```
