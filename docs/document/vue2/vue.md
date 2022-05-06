@@ -3,4 +3,3 @@
 ### 2312
 
 
-<MyVueTemplate>123</MyVueTemplate>
