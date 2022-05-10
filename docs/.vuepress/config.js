@@ -38,7 +38,7 @@ module.exports = {
             '/document/': [
                 {
                     text: 'JS问题',
-                    children: ['/document/js/README.md', '/document/js/Object.md'],
+                    children: ['/document/js/README.md', '/document/js/Object.md', '/document/js/THIS.md'],
                 },
                 {
                     text: 'vue2',
