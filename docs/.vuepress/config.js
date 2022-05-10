@@ -42,7 +42,7 @@ module.exports = {
                 },
                 {
                     text: 'vue2',
-                    children: ['/document/vue2/vue.md'],
+                    children: ['/document/vue2/vue.md', "/document/vue2/COMPONENTS.md"],
                 }
             ],
         }
