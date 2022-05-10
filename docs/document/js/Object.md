@@ -1,6 +1,6 @@
 # 创建对象
 
-## 1.工厂模式
+### 1.工厂模式
 
 ```javascript
 function objectFun(name, age, job) {
@@ -20,7 +20,7 @@ objectOne.sayName() // "张三"
 objectTwo.sayName() // "李四"
 ```
 
-## 2.构造函数模式
+### 2.构造函数模式
 
 ```javascript
 function Factory(name, age, job) {
@@ -48,7 +48,7 @@ factoryTwo.getName() // 李四
 (4)返回新对象。  
 (factoryOne 和 factoryTwo 分别保存这 Factory的一个不同的实例。这两个对象都有一个constructor（构造函数）属性，该属性指向Factory)
 
-## 3.原型模式
+### 3.原型模式
 ```javascript
 function Person(){
     
@@ -62,7 +62,7 @@ let person1 = new Person();
 person1.sayName()
 ```
 
-## 4.组合使用构造函数模式和原型模式
+### 4.组合使用构造函数模式和原型模式
 ```javascript
 function Person(name, age, job) {
     this.name = name;
@@ -78,7 +78,7 @@ Person.prototype = {
 }
 ```
 
-## 5.动态原型模式
+### 5.动态原型模式
 ```javascript
 function Person(name, age, job) {
     this.name = name;
@@ -95,5 +95,6 @@ function Person(name, age, job) {
 
 ## 6.寄生构造函数模式
 ```javascript
-
+test 
+dev
 ```
