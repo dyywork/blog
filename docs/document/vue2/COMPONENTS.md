@@ -89,7 +89,7 @@ npm publish
     {
         "github-markdown-css": "^5.1.0",
         "highlight.js": "^11.5.1",
-        "vue-markdown-loader": "^2.5.0",
+        "dingyongya-vue-markdown-loader": "^2.5.3",
         "vue-loader": "^14.0.0",
         "vue-template-compiler": "^2.6.14"
     }
@@ -99,7 +99,7 @@ npm publish
 const path = require('path')
 module.exports = {
     publicPath: process.env.NODE_ENV === 'production'
-        ? '/vue-components/'
+        ? './'
         : '/',
     configureWebpack: {
       resolve: {
@@ -110,15 +110,16 @@ module.exports = {
     },
     chainWebpack: config => {
         config.module.rule('md')
-            .test(/\.md/)
-            .use('vue-loader')
-            .loader('vue-loader')
-            .end()
-            .use('vue-markdown-loader')
-            .loader('vue-markdown-loader/lib/markdown-compiler')
-            .options({
-                raw: true,
-            })
+        .test(/\.md/)
+        .use('vue-loader')
+        .loader('vue-loader')
+        .end()
+        .use('dingyongya-vue-markdown-loader')
+        .loader('dingyongya-vue-markdown-loader/lib/markdown-compiler')
+        .options({
+            raw: true,
+            script: true
+        })
     }
 }
 ```
