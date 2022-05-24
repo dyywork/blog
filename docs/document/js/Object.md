@@ -17,7 +17,6 @@ function CreateObject(name) { // CreateObject 为构造函数
         console.log(this.name + ' eat something')
     }
 }
-
 let objA = new CreateObject('A') // 为构造函数的实例
 let objB = new CreateObject('B') // 为构造函数的实例
 
