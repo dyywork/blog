@@ -20,12 +20,17 @@ vue create my-components
 
 ```vue
     <template>
-      <div>oneComponent</div>
+      <div>oneComponent{{count}}</div>
     </template>
     
     <script>
     export default {
-      name: "oneComponent"
+      name: "oneComponent",
+			data() {
+        return {
+          count: 0
+				}
+			}
     }
     </script>
     
