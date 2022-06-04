@@ -385,8 +385,23 @@ function Person(name, age, job) {
 }
 ```
 
-### 7.寄生构造函数模式
+### 7.链模式
+
+::: tip
+链模式是实现链式调用的主要方法，通过在自身方法中返回自身的方式，在一个对象连续多次调用自身方法是可以简化写法。
+这种链式调用在在开发多库和框架如jquery/zepto 中频繁被使用
+:::
 ```javascript
-test 
-dev
+let obj = {
+    a: function () {
+        console.log('aaa')
+				return this
+		},
+		b: function (){
+        console.log('bbb')
+				return this
+		}
+}
+
+obj.a().b() // aaa  bbb
 ```
