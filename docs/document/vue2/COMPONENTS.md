@@ -86,15 +86,13 @@ npm publish
 ```
 
 
-
-
 ## 处理组件文档md
 1. 主要用到的插件
 ```json
     {
         "github-markdown-css": "^5.1.0",
         "highlight.js": "^11.5.1",
-        "dingyongya-vue-markdown-loader": "^2.5.3",
+        "dingyongya-vue-markdown-loader": "^2.5.6",
         "vue-loader": "^14.0.0",
         "vue-template-compiler": "^2.6.14"
     }
