@@ -21,15 +21,29 @@ module.exports = {
                 link: '/'
             },
             {
-                text: 'js问题',
+                text: 'js备忘录',
                 children: [
                     {
-                        text: '垃圾回收',
-                        link: '/js/README.md',
+                        text: '面向对象',
+                        link: '/document/js/Object.md',
                     },
+                ]
+            },
+            {
+                text: 'vue备忘录',
+                children: [
                     {
-                        text: '创建对象',
-                        link: '/js/Object.md',
+                        text: '组件库搭建',
+                        link: '/document/vue2/COMPONENTS.md',
+                    },
+                ]
+            },
+            {
+                text: 'git备忘录',
+                children: [
+                    {
+                        text: 'git操作',
+                        link: '/document/git/COMMIT.md',
                     },
                 ]
             },
