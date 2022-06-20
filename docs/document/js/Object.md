@@ -423,3 +423,71 @@ obj.a().b() // aaa  bbb
 ::: tip
 - 通过对多个异步进程的监听，对未来事件进行统一管理
 :::
+### MVC模式
+::: tip
+- MVC是由三个单词的首字符组成的：分别是模型model、 视图view、 控制器controller
+- 他是一种是使用业务逻辑，数据，视图进行分离的方式来组织架构代码的一种模式
+:::
+```js
+ var MVC = {}
+    MVC.model = (function() {
+        var data = {
+            side:[{
+                title: 'side1',
+                url: './a.html'
+            },{
+                title: 'side2',
+                url: './b.html'
+            },{
+                title: 'side3',
+                url: './c.html'
+            },]
+        }
+        return {
+            getData(key) {
+                return data[key];
+            },
+            setData(key, value){
+                data[key] = value
+                MVC.view('createHtml')
+            }
+        }
+    })()
+
+    MVC.view = (function(){
+        var m = MVC.model
+        var view = {
+            createHtml: function() {
+                var list = m.getData('side')
+                var html = "<ul>";
+                for(var i = 0; i< list.length; i++) {
+                    html += "<li><a href='"+ list[i].url +"'>"+ list[i].title +"</a></li>"
+                }
+                html +='</ul>';
+                document.querySelector('body').innerHTML = html;
+            }
+        }
+        return function(v){
+            view[v]()
+        };
+    })()
+    MVC.ctrl = (function(){
+        var v = MVC.view
+        var m = MVC.model
+        var c = {
+            init: function() {
+                v('createHtml')
+            },
+            updateHtml() {
+                m.setData('side', [{title: 'new Side', url: './adf.html'}])
+            }
+        }
+        return c;
+    })()
+    window.onload=function() {
+        MVC.ctrl.init()
+        setTimeout(function() {
+            MVC.ctrl.updateHtml()
+        }, 3000)
+    }
+```
