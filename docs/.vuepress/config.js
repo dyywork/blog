@@ -39,6 +39,15 @@ module.exports = {
                 ]
             },
             {
+                text: 'react备忘录',
+                children: [
+                    {
+                        text: '组件库搭建',
+                        link: '/document/react/interview.md',
+                    },
+                ]
+            },
+            {
                 text: 'git备忘录',
                 children: [
                     {
@@ -57,6 +66,10 @@ module.exports = {
                 {
                     text: 'vue2',
                     children: ['/document/vue2/vue.md', "/document/vue2/COMPONENTS.md"],
+                },
+                {
+                    text: 'react',
+                    children: ['/document/react/interview.md'],
                 },
                 {
                     text: 'git',
