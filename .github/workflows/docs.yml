@@ -24,7 +24,7 @@ jobs:
           node-version: '14'
       # 运行构建脚本
       - name: 删除缓存
-        run: npm cache clean --force
+        run: yarn cache clean --force
       # 缓存 node_modules
       - name: Cache dependencies
         uses: actions/cache@v3.0.8
