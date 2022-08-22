@@ -13,7 +13,28 @@ function sum(a, b) {
 - 组件无论是使用函数声明还是通过 class 声明，都`决不能修改`自身的 `props`。
 - 所有 React 组件都必须像`纯函数`一样保护它们的 `props 不被更改`。
 
-## componentDidUpdate用法
+## 生命周期
+ ### 1.加载组件时方法的调用顺序
+
+<img src="./img/img.png"/>
+
+#### 1. 首次加载
+`constructor` ---> `static getDerivedStateFromProps()` 初始化 `this.state` ---> `render()` ---> `React 更新 DOM 和 refs` ---> `componentDidMount()`
+#### 2. 更新
+
+`"New props"`, `"setSate()"`, `"forceUpdate"` 三种方式更新触发
+
+`static getDerivedStateFromProps()` ---> `shouldComponentUpdate()` 使用 "forceUpdate" 不触发， 返回值false 不重新渲染 ---> `render()` ---> 
+`getSnapshotBeforeUpdate()`---> `React 更新 DOM 和 refs` ---> `componentDidUpdate()`
+
+::: tip
+`getSnapshotBeforeUpdate()` 在最近一次渲染输出（提交到 DOM 节点）之前调用。它使得组件能在发生更改之前从 DOM 中捕获一些信息（例如，滚动位置）。此生命周期方法的任何返回值将作为参数`snapshot`传递给 `componentDidUpdate(prevProps, prevState, snapshot)`
+:::
+
+#### 3. 卸载时
+`组件` 从 `DOM` 中被移除 --> `componentWillUnmount()`
+
+### componentDidUpdate用法
 
 ```js
 	componentDidUpdate(prevProps, prevState, snapshot)

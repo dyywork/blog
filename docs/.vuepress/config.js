@@ -1,14 +1,12 @@
-const { backToTopPlugin } = require('@vuepress/plugin-back-to-top')
 const { defaultTheme } = require('vuepress')
-const { path } = require('@vuepress/utils')
-const { registerComponentsPlugin } = require('@vuepress/plugin-register-components')
+// const { path } = require('@vuepress/utils')
+// const { registerComponentsPlugin } = require('@vuepress/plugin-register-components')
 
 module.exports = {
     plugins: [
-        backToTopPlugin(),
-        registerComponentsPlugin({
-            componentsDir: path.resolve(__dirname, '../components'),
-        })
+        // registerComponentsPlugin({
+        //     componentsDir: path.resolve(__dirname, '../components'),
+        // })
     ],
     lang: 'zh-CN',
     title: '莫名点',
