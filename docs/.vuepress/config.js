@@ -1,13 +1,6 @@
 const { defaultTheme } = require('vuepress')
-// const { path } = require('@vuepress/utils')
-// const { registerComponentsPlugin } = require('@vuepress/plugin-register-components')
 
 module.exports = {
-    plugins: [
-        // registerComponentsPlugin({
-        //     componentsDir: path.resolve(__dirname, '../components'),
-        // })
-    ],
     lang: 'zh-CN',
     title: '莫名点',
     description: '问题汇总',
