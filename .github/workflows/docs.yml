@@ -22,7 +22,9 @@ jobs:
         with:
           # 选择要使用的 node 版本
           node-version: '14'
-
+      # 运行构建脚本
+      - name: 删除缓存
+        run: npm cache clean --force
       # 缓存 node_modules
       - name: Cache dependencies
         uses: actions/cache@v3.0.8
@@ -38,10 +40,6 @@ jobs:
       - name: Install dependencies
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn --frozen-lockfile
-
-      # 运行构建脚本
-      - name: 删除缓存
-        run: npm cache clean --force
 
         # 运行构建脚本
       - name: Build VuePress site
