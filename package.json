@@ -2,6 +2,9 @@
   "name": "blog",
   "version": "1.0.0",
   "main": "index.js",
+  "author": {
+    "name": "dingyongya"
+  },
   "license": "MIT",
   "scripts": {
     "dev": "vuepress dev docs",
