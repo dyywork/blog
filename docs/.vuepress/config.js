@@ -1,7 +1,5 @@
 
-
 const { defaultTheme }= require('vuepress')
-console.log(defaultTheme);
 module.exports = {
     lang: 'zh-CN',
     title: '莫名点',
