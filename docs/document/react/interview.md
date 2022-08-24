@@ -83,7 +83,26 @@ function sum(a, b) {
 这需要`函数作为子元素（function as a child）`这种做法。这个函数接收当前的 `context` 值，返回一个 `React` 节点。传递给函数的 `value` 值等同于往上组件树离
 这个 `context` 最近的 `Provider` 提供的 `value` 值。如果没有对应的 `Provider`，`value` 参数等同于传递给 `createContext()` 的 `defaultValue`。
 
-4. hooks的使用
+## hooks的使用
+<h4 style="color: red">为什么要用Hook?</h4> <br/>
+1.在组件之间复用状态逻辑很难
+
+- `Hook` 使你在无需修改组件结构的情况下复用状态逻辑。
+
+2.复杂组件变得难以理解
+- `Hook` 将组件中`相互关联`的部分`拆分`成更小的函数（比如设置订阅或请求数据），而并非强制按照生命周期划分。你还可以使用 `reducer` 来管理组件的内部状态，使其更加可预测。
+
+3.难以理解的 class
+- `Hook` 使你在非 `class` 的情况下可以使用更多的 `React` 特性
+
+<h4 style="color: red">什么是 Hook?</h4>
+
+- `Hook` 是一些可以让你在`函数组件`里`“钩入” React state` 及`生命周期等特性`的`函数`。`Hook` `不能`在 `class 组件`中使用 —— 这使得你不使用 `class` 也能使用 `React`。
+
+<h4 style="color: red">什么是 "副作用"?</h4>
+
+- 你之前可能已经在 `React` 组件中执行过数据`获取、订阅`或者`手动修改`过 `DOM`。我们统一把这些操作称为`“副作用”`，或者简称为`“作用”`。
+
 6. echarts中label文字长度的获取；点击每个柱形要怎么调用弹框
 7. react中可以使用requirejs吗（一般使用ES6模块化导入，也可以用require，写法为 const component = require('./component') ）
 8. 中英文或主题色切换怎么实现的；切换后页面会刷新吗
