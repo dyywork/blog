@@ -12,15 +12,15 @@
 }
 .left{
 	flex-basis: 100px;
-	background: red;
+	background: #FF6A6A;
 }
 .center{
 	flex-grow: 1;
-	background: greenyellow;
+	background: #00CD66;
 }
 .right {
 	flex-basis: 100px;
-	background: red;
+	background: #FF6A6A;
 }
 </style>
 
@@ -32,21 +32,21 @@
 </div>
 
 <style>
-.box{
-	display: flex;
-	height: 200px;
-}
-.left{
-	flex-basis: 100px;
-	background: red;
-}
-.center{
-	flex-grow: 1;
-	background: greenyellow;
-}
-.right {
-	flex-basis: 100px;
-	background: red;
-}
+    .box{
+        display: flex;
+        height: 200px;
+    }
+    .left{
+        flex-basis: 100px;
+        background: #FF6A6A;
+    }
+    .center{
+        flex-grow: 1;
+        background: #00CD66;
+    }
+    .right {
+        flex-basis: 100px;
+        background: #FF6A6A;
+    }
 </style>
 ```
