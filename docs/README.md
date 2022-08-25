@@ -8,3 +8,9 @@ actions:
 ---
 
 
+<style>
+  .home .hero img{
+    margin: 20px auto;
+    max-height: 500px;
+  }
+</style>
