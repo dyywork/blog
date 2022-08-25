@@ -1,7 +1,5 @@
-# vue2.x
+# vue问题集合
 
-### 2312
+## mixins 调用顺序
+`Mixin 钩子`按照`传入顺序依次调用`，并在调用`组件自身的钩子之前`被调用。
 
-###  position: sticky;注意事项
-
-父元素不能有overflow:hidden或者overflow:auto属性

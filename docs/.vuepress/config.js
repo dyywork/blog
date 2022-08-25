@@ -39,6 +39,15 @@ module.exports = {
                 ]
             },
             {
+                text: 'css备忘录',
+                children: [
+                    {
+                        text: 'css',
+                        link: '/document/css/styleIssues.md',
+                    },
+                ]
+            },
+            {
                 text: 'git备忘录',
                 children: [
                     {
@@ -52,7 +61,7 @@ module.exports = {
             '/document/': [
                 {
                     text: 'JS问题',
-                    children: ['/document/js/README.md', '/document/js/Object.md', '/document/js/THIS.md'],
+                    children: ['/document/js/Object.md', '/document/js/THIS.md','/document/js/README.md', ],
                 },
                 {
                     text: 'vue2',
@@ -61,6 +70,10 @@ module.exports = {
                 {
                     text: 'react',
                     children: ['/document/react/interview.md'],
+                },
+                {
+                    text: 'css',
+                    children: ['/document/css/styleIssues.md'],
                 },
                 {
                     text: 'git',
