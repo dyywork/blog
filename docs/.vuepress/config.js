@@ -73,7 +73,7 @@ module.exports = {
                 },
                 {
                     text: 'css',
-                    children: ['/document/css/styleIssues.md'],
+                    children: ['/document/css/layout.md','/document/css/styleIssues.md'],
                 },
                 {
                     text: 'git',
