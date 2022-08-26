@@ -33,8 +33,11 @@ module.exports = {
                 text: 'react备忘录',
                 children: [
                     {
-                        text: '组件库搭建',
+                        text: 'react生命周期',
                         link: '/document/react/interview.md',
+                    },{
+                        text: 'hooks',
+                        link: '/document/react/hook.md',
                     },
                 ]
             },
@@ -69,7 +72,7 @@ module.exports = {
                 },
                 {
                     text: 'react',
-                    children: ['/document/react/interview.md'],
+                    children: ['/document/react/interview.md', '/document/react/hook.md'],
                 },
                 {
                     text: 'css',
