@@ -79,3 +79,19 @@ useEffect(() => {
   - 不要在普通的 `JavaScript` 函数中调用 `Hook`。
   - 在 `React` 的函数组件中调用 `Hook`
   - 在自定义 `Hook` 中调用其他 `Hook`
+
+## 自定义Hook
+- `自定义 Hook` 是一个`函数`，其名称以 `“use” 开头`，函数内部`可以调用`其他的 `Hook`。
+- `自定义 Hook` 是一种自然遵循 `Hook 设计`的约定，而并`不是 React` 的`特性`。
+
+<h4 style="color: red">自定义 Hook 必须以 “use” 开头吗？</h4>
+
+- `必须如此。`这个约定非常重要。不遵循的话，由于`无法判断`某个函数是`否包含对其内部 Hook 的调用`，`React` 将无法自动检查你的 `Hook` 是否违反了 `Hook 的规则`。
+<h4 style="color: red">在两个组件中使用相同的 Hook 会共享 state 吗？</h4>
+
+- `不会。` `自定义 Hook` 是一种`重用状态逻辑的机制`(例如设置为订阅并存储当前值)，所以每次使用`自定义 Hook `时，其中的所有 `state` 和`副作用`都是`完全隔离的`。
+
+<h4 style="color: red">自定义 Hook 如何获取独立的 state？</h4>
+
+- 每次调用 `Hook`，它都会获取`独立的 state`；我们可以在一个组件中`多次调用 useState 和 useEffect`，它们是`完全独立的`。
+
