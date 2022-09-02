@@ -1,9 +1,10 @@
-
 const { defaultTheme }= require('vuepress')
+const container = require('markdown-it-container')
 module.exports = {
     lang: 'zh-CN',
     title: '莫名点',
     description: '问题汇总',
+    base: '/blog/',
     theme: defaultTheme({
         home: '/',
         navbar: [
@@ -72,7 +73,7 @@ module.exports = {
                 },
                 {
                     text: 'react',
-                    children: ['/document/react/interview.md', '/document/react/hook.md'],
+                    children: ['/document/react/interview.md', '/document/react/hook.md', '/document/react/higherComponent.md'],
                 },
                 {
                     text: 'css',
@@ -81,9 +82,35 @@ module.exports = {
                 {
                     text: 'git',
                     children: ['/document/git/COMMIT.md'],
+                },
+                {
+                    text: '网络协议',
+                    children: ['/document/http/http.md'],
                 }
             ],
         }
     },),
-    base: '/blog/'
+    extendsMarkdown: (md) => {
+        md.use(container, 'dome', {
+            validate: function(params) {
+                return params.trim().match(/^dome\s+(.*)$/);
+            },
+            render: function (tokens, idx) {
+                console.log(tokens);
+                // 通过 tokens[idx].info.trim() 取出 'click me' 字符串
+                var m = tokens[idx].info.trim().match(/^dome\s+(.*)$/);
+
+                // 开始标签的 nesting 为 1，结束标签的 nesting 为 -1
+                if (tokens[idx].nesting === 1) {
+                    // 开始标签
+                    return '<details><summary>' + md.utils.escapeHtml(m[1]) + '</summary>\n';
+                } else {
+                    // 结束标签
+                    return '</details>\n';
+                }
+            }
+        })
+        md.linkify.set({ fuzzyEmail: false });
+    }
+
 }

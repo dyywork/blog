@@ -50,3 +50,8 @@
     }
 </style>
 ```
+
+::: dome css
+	<span>123</span>
+123
+:::
