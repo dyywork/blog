@@ -20,11 +20,11 @@ jobs:
 
 
 
-      - name: 设置 Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: npm
+      - name: Setup Node.js
+          uses: actions/setup-node@v1
+          with:
+            # 选择要使用的 node 版本
+            node-version: '14'
 
       - name: 安装依赖
         run: npm install
