@@ -20,7 +20,7 @@ category:
 	display: flex;
 	height: 200px;
 }
-.left{
+.box-left{
 	flex-basis: 100px;
 	background: #FF6A6A;
 }
@@ -28,7 +28,7 @@ category:
 	flex-grow: 1;
 	background: #00CD66;
 }
-.right {
+.box-right {
 	flex-basis: 100px;
 	background: #FF6A6A;
 }
@@ -36,9 +36,9 @@ category:
 
 ```html
 <div class="box">
-	<div class="left"></div>
+	<div class="box-left"></div>
 	<div class="center"></div>
-	<div class="right"></div>
+	<div class="box-right"></div>
 </div>
 
 <style>
