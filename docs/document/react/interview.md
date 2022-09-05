@@ -1,3 +1,14 @@
+---
+icon: edit
+date: 2022-08-19
+author: Ms.Ding
+category:
+- React
+tag:
+  - react生命周期
+---
+
+
 # react 生命周期
 
 ## 组件 && Props的只读性

@@ -1,3 +1,12 @@
+---
+icon: edit
+date: 2022-08-19
+author: Ms.Ding
+category:
+- vue
+tag:
+	- vue 问题集合
+---
 # vue问题集合
 
 ## mixins 调用顺序
