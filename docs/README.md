@@ -1,7 +1,7 @@
 ---
 home: true
 layout: Blog
-icon: home
+icon: home-filling
 title: 博客主页
 bgImage: /one.jpg
 heroText: 莫名点

@@ -1,5 +1,4 @@
 ---
-icon: edit
 date: 2022-08-19
 author: Ms.Ding
 category:
@@ -27,7 +26,8 @@ function sum(a, b) {
 ## 生命周期
  ### 1.加载组件时方法的调用顺序
 
-<img src="./img/img.png"/>
+
+![Alt](./img/img.png "图片标题")
 
 #### 1. 首次加载
 `constructor` ---> `static getDerivedStateFromProps()` 初始化 `this.state` ---> `render()` ---> `React 更新 DOM 和 refs` ---> `componentDidMount()`
