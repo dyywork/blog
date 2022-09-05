@@ -38,7 +38,7 @@ jobs:
       # 如果缓存没有命中，安装依赖
       - name: Install dependencies
         if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: npm install
+        run: yarn install
 
         # 运行构建脚本
       - name: Build VuePress site
