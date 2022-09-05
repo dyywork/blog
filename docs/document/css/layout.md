@@ -1,4 +1,17 @@
+---
+icon: edit
+date: 2022-01-01
+category:
+- CategoryA
+	tag:
+- tag A
+- tag B
+---
+
 # 布局
+
+<MyTemplate></MyTemplate>
+
 <div class="box">
 <div class="left"></div>
 <div class="center"></div>
@@ -51,7 +64,5 @@
 </style>
 ```
 
-::: dome css
-	<span>123</span>
-123
+::: title css
 :::

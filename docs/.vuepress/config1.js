@@ -1,5 +1,8 @@
+
 const { defaultTheme }= require('vuepress')
 const container = require('markdown-it-container')
+
+const path = require('path')
 module.exports = {
     lang: 'zh-CN',
     title: '莫名点',
@@ -89,24 +92,31 @@ module.exports = {
                 }
             ],
         }
-    },),
+    }),
+    plugins: [
+        [
+            '@vuepress/plugin-register-components',
+            {
+                componentsDir: path.resolve(__dirname, './components')
+            }
+        ]
+    ],
     extendsMarkdown: (md) => {
-        md.use(container, 'dome', {
+        md.use(container, 'title', {
             validate: function(params) {
-                return params.trim().match(/^dome\s+(.*)$/);
+                return params.trim().match(/^title\s+(.*)$/);
             },
             render: function (tokens, idx) {
-                console.log(tokens);
                 // 通过 tokens[idx].info.trim() 取出 'click me' 字符串
-                var m = tokens[idx].info.trim().match(/^dome\s+(.*)$/);
+                var m = tokens[idx].info.trim().match(/^title\s+(.*)$/);
 
                 // 开始标签的 nesting 为 1，结束标签的 nesting 为 -1
                 if (tokens[idx].nesting === 1) {
                     // 开始标签
-                    return '<details><summary>' + md.utils.escapeHtml(m[1]) + '</summary>\n';
+                    return '<h4 style="color: red">' + md.utils.escapeHtml(m[1]);
                 } else {
                     // 结束标签
-                    return '</details>\n';
+                    return '</h4>';
                 }
             }
         })
