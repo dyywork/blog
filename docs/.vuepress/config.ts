@@ -64,7 +64,7 @@ export default defineUserConfig({
                 // serverURL: "https://vuepress-theme-hope-comment.vercel.app",
             },
             mdEnhance: {
-                enableAll: true,
+                enableAll: false,
                 presentation: {
                     plugins: ["highlight", "math", "search", "notes", "zoom"],
                 },
