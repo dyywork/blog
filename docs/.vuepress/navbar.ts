@@ -20,7 +20,7 @@ export default navbar([
             {
                 text: "vue",
                 icon: "edit",
-                prefix: "vue/",
+                prefix: "vue2/",
                 children: [
                     {text: "vue 问题集合", icon: "edit", link: "vue"},
                     {text: "组件库搭建", icon: "edit", link: "COMPONENTS"},
