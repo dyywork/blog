@@ -1,3 +1,13 @@
+---
+icon: edit
+date: 2022-08-19
+author: Ms.Ding
+category:
+- vue2
+tag:
+	- 组件库搭建
+---
+
 # 组件库搭建
 
 [线上Dome vue-components](https://dyywork.github.io/vue-components/)

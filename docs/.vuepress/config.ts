@@ -1,118 +1,78 @@
 
-const container = require('markdown-it-container')
+// @ts-ignore
+import { defineUserConfig } from 'vuepress'
 
-import {defineUserConfig, defaultTheme} from 'vuepress'
+import { hopeTheme} from "vuepress-theme-hope";
+import sidebar from './sidebar'
+import navbar from './navbar'
 
+// @ts-ignore
 export default defineUserConfig({
     lang: 'zh-CN',
     title: '莫名点',
     description: '问题汇总',
     base: '/blog/',
-    theme: defaultTheme({
-        home: '/',
-        navbar: [
-            {
-                text: '主页',
-                link: '/'
+    theme: hopeTheme({
+        hostname: 'https://dyywork.github.io',
+        iconAssets: "fontawesome",
+        fullscreen: true,
+        // @ts-ignore
+        repo: "https://github.com/dyywork/blog",
+        repoLabel: "GitHub",
+        // 是否在导航栏内显示仓库链接，默认为 `true`
+        repoDisplay: true,
+        docsDir: "demo/src",
+        logo: "/logo.png",
+        footer: "默认页脚",
+        displayFooter: true,
+        encrypt: {
+            config: {
+                "/guide/encrypt.html": ["1234"],
             },
-            {
-                text: 'js备忘录',
-                children: [
-                    {
-                        text: '面向对象',
-                        link: '/document/js/Object.md',
-                    },
-                ]
+        },
+        sidebar: sidebar,
+        navbar: navbar,
+        pageInfo: ["Author", "Original", "Date", "Category", "Tag", "ReadingTime"],
+        plugins: {
+            blog: {
+                autoExcerpt: true,
             },
-            {
-                text: 'vue备忘录',
-                children: [
-                    {
-                        text: '组件库搭建',
-                        link: '/document/vue2/COMPONENTS.md',
-                    },
-                ]
+
+            // 如果你不需要评论，可以直接删除 comment 配置，
+            // 以下配置仅供体验，如果你需要评论，请自行配置并使用自己的环境，详见文档。
+            // 为了避免打扰主题开发者以及消耗他的资源，请不要在你的正式环境中直接使用下列配置!!!!!
+            comment: {
+                /**
+                 * Using Giscus
+                 */
+                provider: "Giscus",
+                repo: "dyywork/blog",
+                repoId: "MDEwOlJlcG9zaXRvcnkzOTQxNzc3NTM=",
+                category: "Announcements",
+                categoryId: "DIC_kwDOF36s2c4CRO9a",
+
+                /**
+                 * Using Twikoo
+                 */
+                // provider: "Twikoo",
+                // envId: "https://twikoo.ccknbc.vercel.app",
+
+                /**
+                 * Using Waline
+                 */
+                // provider: "Waline",
+                // serverURL: "https://vuepress-theme-hope-comment.vercel.app",
             },
-            {
-                text: 'react备忘录',
-                children: [
-                    {
-                        text: 'react生命周期',
-                        link: '/document/react/interview.md',
-                    },{
-                        text: 'hooks',
-                        link: '/document/react/hook.md',
-                    },
-                ]
-            },
-            {
-                text: 'css备忘录',
-                children: [
-                    {
-                        text: 'css',
-                        link: '/document/css/styleIssues.md',
-                    },
-                ]
-            },
-            {
-                text: 'git备忘录',
-                children: [
-                    {
-                        text: 'git操作',
-                        link: '/document/git/COMMIT.md',
-                    },
-                ]
-            },
-        ],
-        sidebar: {
-            '/document/': [
-                {
-                    text: 'JS问题',
-                    children: ['/document/js/Object.md', '/document/js/THIS.md','/document/js/README.md', ],
+            mdEnhance: {
+                enableAll: true,
+                presentation: {
+                    plugins: ["highlight", "math", "search", "notes", "zoom"],
                 },
-                {
-                    text: 'vue2',
-                    children: ['/document/vue2/vue.md', "/document/vue2/COMPONENTS.md"],
-                },
-                {
-                    text: 'react',
-                    children: ['/document/react/interview.md', '/document/react/hook.md', '/document/react/higherComponent.md'],
-                },
-                {
-                    text: 'css',
-                    children: ['/document/css/layout.md','/document/css/styleIssues.md'],
-                },
-                {
-                    text: 'git',
-                    children: ['/document/git/COMMIT.md'],
-                },
-                {
-                    text: '网络协议',
-                    children: ['/document/http/http.md'],
-                }
-            ],
-        }
+                // 启用图片标记
+                imageMark: true,
+                // 启用图片大小
+                imageSize: true,
+            },
+        },
     }),
-    extendsMarkdown: (md) => {
-        md.use(container, 'title', {
-            validate: function(params) {
-                return params.trim().match(/^title\s+(.*)$/);
-            },
-            render: function (tokens, idx) {
-                // 通过 tokens[idx].info.trim() 取出 'click me' 字符串
-                var m = tokens[idx].info.trim().match(/^title\s+(.*)$/);
-
-                // 开始标签的 nesting 为 1，结束标签的 nesting 为 -1
-                if (tokens[idx].nesting === 1) {
-                    // 开始标签
-                    return '<h4 style="color: red">' + md.utils.escapeHtml(m[1]);
-                } else {
-                    // 结束标签
-                    return '</h4>';
-                }
-            }
-        })
-        md.linkify.set({ fuzzyEmail: false });
-    }
-
 })

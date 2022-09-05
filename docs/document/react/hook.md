@@ -1,3 +1,17 @@
+---
+icon: edit
+date: 2022-08-19
+author: Ms.Ding
+category:
+- React
+- Hooks
+tag:
+- useState
+- useEffect
+sticky: 1
+star: 1
+---
+
 # hooks
 ## hooks的使用
 <h4 style="color: red">为什么要用Hook?</h4> <br/>

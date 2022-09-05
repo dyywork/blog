@@ -1,3 +1,13 @@
+---
+icon: edit
+date: 2022-01-12
+category:
+- javascript
+tag:
+  - Object
+  - 面向对象
+---
+
 # 面向对象
 
 ::: tip

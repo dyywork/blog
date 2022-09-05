@@ -1,4 +1,11 @@
-
+---
+icon: edit
+date: 2022-01-12
+category:
+- javascript
+tag:
+- 垃圾回收
+---
 # 垃圾回收
 
 ## 1.标记清除

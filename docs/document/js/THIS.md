@@ -1,3 +1,14 @@
+---
+icon: edit
+date: 2022-01-12
+category:
+  - javascript
+tag:
+  - this 
+sticky: 2
+star: 2
+---
+
 # this
 ### 1.this的指向
 1.在函数执行的时候会在函数内部创建两个变量，arguments、this。 <br/>
