@@ -23,7 +23,7 @@ export default defineUserConfig({
         repoDisplay: true,
         docsDir: "demo/src",
         logo: "/logo.png",
-        footer: "默认页脚",
+        footer: "一个个人问题集锦收录！！！",
         displayFooter: true,
         encrypt: {
             config: {
