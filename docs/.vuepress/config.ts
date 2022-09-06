@@ -20,15 +20,13 @@ export default defineUserConfig({
         repoLabel: "GitHub",
         // 是否在导航栏内显示仓库链接，默认为 `true`
         repoDisplay: true,
-        docsDir: "demo/src",
+        docsDir: "blog",
         logo: "/logo.png",
         footer: "一个个人问题集锦收录！！！",
+        author: 'Mr.Ding',
+        lastUpdated: true,
+        editLink: false,
         displayFooter: true,
-        encrypt: {
-            config: {
-                "/guide/encrypt.html": ["1234"],
-            },
-        },
         sidebar: sidebar,
         navbar: navbar,
         pageInfo: ["Author", "Original", "Date", "Category", "Tag", "ReadingTime"],
@@ -56,7 +54,7 @@ export default defineUserConfig({
                 // envId: "https://twikoo.ccknbc.vercel.app",
 
                 /**
-                 * Using Waline
+                     * Using Waline
                  */
                 // provider: "Waline",
                 // serverURL: "https://vuepress-theme-hope-comment.vercel.app",
