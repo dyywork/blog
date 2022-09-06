@@ -50,7 +50,7 @@ export default navbar([
             },
             {
                 text: "http",
-                prefix: "git/",
+                prefix: "http/",
                 children: [
                     {text: "http",icon: "link", link: "http"},
                 ],
