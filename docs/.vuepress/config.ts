@@ -16,7 +16,6 @@ export default defineUserConfig({
         hostname: 'https://dyywork.github.io',
         iconAssets: "//at.alicdn.com/t/c/font_3631218_789kiskmt88.css",
         fullscreen: true,
-        // @ts-ignore
         repo: "https://github.com/dyywork/blog",
         repoLabel: "GitHub",
         // 是否在导航栏内显示仓库链接，默认为 `true`
@@ -63,7 +62,7 @@ export default defineUserConfig({
                 // serverURL: "https://vuepress-theme-hope-comment.vercel.app",
             },
             mdEnhance: {
-                enableAll: true,
+                enableAll: false,
                 presentation: {
                     plugins: ["highlight", "math", "search", "notes", "zoom"],
                 },
