@@ -1,6 +1,6 @@
 ---
 date: 2022-08-19
-author: Ms.Ding
+author: Mr.Ding
 category:
 - vue
 tag:
