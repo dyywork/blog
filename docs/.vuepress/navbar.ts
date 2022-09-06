@@ -55,6 +55,13 @@ export default navbar([
                     {text: "http",icon: "link", link: "http"},
                 ],
             },
+            {
+                text: "性能优化",
+                prefix: "performance/",
+                children: [
+                    {text: "性能优化",icon: "adjust", link: "performance"},
+                ],
+            },
         ]
     }
 ])

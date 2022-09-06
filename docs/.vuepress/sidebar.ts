@@ -43,5 +43,12 @@ export default sidebar([
         prefix: "/document/http/",
         collapsable: true,
         children: ["http"],
+    },
+    {
+        text: "性能优化",
+        icon: "adjust",
+        prefix: "/document/performance/",
+        collapsable: true,
+        children: ["performance"],
     }
 ])

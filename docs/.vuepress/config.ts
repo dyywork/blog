@@ -63,6 +63,11 @@ export default defineUserConfig({
             },
             mdEnhance: {
                 enableAll: false,
+                demo: true,
+                mark: true,
+                flowchart: true,
+                tasklist: true,
+                tabs: true,
                 presentation: {
                     plugins: ["highlight", "math", "search", "notes", "zoom"],
                 },
