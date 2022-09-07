@@ -29,7 +29,7 @@ export default defineUserConfig({
         displayFooter: true,
         sidebar: sidebar,
         navbar: navbar,
-        pageInfo: ["Author", "Original", "Date", "Category", "Tag", "ReadingTime"],
+        pageInfo: ["Author", "Original", "Date", "Category", "Tag", "ReadingTime","Word","PageView"],
         plugins: {
             blog: {
                 autoExcerpt: true,
