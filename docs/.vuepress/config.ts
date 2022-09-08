@@ -1,12 +1,9 @@
-
-// @ts-ignore
 import { defineUserConfig } from 'vuepress'
 
 import { hopeTheme} from "vuepress-theme-hope";
 import sidebar from './sidebar'
 import navbar from './navbar'
 
-// @ts-ignore
 export default defineUserConfig({
     lang: 'zh-CN',
     title: '莫名点',
