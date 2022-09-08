@@ -13,4 +13,7 @@ tag:
 
 ## element
 
-- 合计变形处理 ，修改是否显示合计判断 源码为判断data数据 可以根据是否有shouSummary 来显示
+- 合计变形处理 ，修改是否显示合计判断 源码为判断data数据 注释掉
+- 时间范围选择器中defaultTime 对于默认值无用，只能选中后才会触发自动拼接
+- table 暂无数据 出现横向滚动条，不是在可视范围居中 注释掉 // width: this.bodyWidth,
+- 过滤方法没有数据的时候，不显示暂无数据，在判空的时候少了一个_vm.tableData.length === 0判断
