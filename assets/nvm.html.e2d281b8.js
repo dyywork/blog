@@ -1,0 +1,1 @@
+import{_ as t}from"./_plugin-vue_export-helper.cdc0426e.js";import{o as a,c as n,a as e,b as o}from"./app.4d91b726.js";const r={},c=e("h1",{id:"nvm",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#nvm","aria-hidden":"true"},"#"),o(" nvm")],-1),s=[c];function _(d,m){return a(),n("div",null,s)}const l=t(r,[["render",_],["__file","nvm.html.vue"]]);export{l as default};
