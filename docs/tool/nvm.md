@@ -1,3 +1,9 @@
+---
+date: 2022-09-28
+category:
+- tool
+---
+
 # nvm
 
 ::: tip
