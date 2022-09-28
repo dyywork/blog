@@ -27,6 +27,11 @@ export default defineUserConfig({
         sidebar: sidebar,
         navbar: navbar,
         pageInfo: ["Author", "Original", "Date", "Category", "Tag", "ReadingTime","Word","PageView"],
+        themeColor: {
+            green: "#3eaf7c",
+            red: "#f26d6d",
+            orange: "#fb9b5f",
+        },
         plugins: {
             blog: {
                 autoExcerpt: true,
