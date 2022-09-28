@@ -4,7 +4,7 @@ export default navbar([
     '/',
     {
         text: "工具",
-        icon: "layout-filling",
+        icon: "work-filling",
         prefix: "/tool/",
         children: [
             {text: "nvm", icon: "smile", link: "nvm"},
