@@ -3,6 +3,14 @@ import {navbar} from 'vuepress-theme-hope'
 export default navbar([
     '/',
     {
+        text: "工具",
+        icon: "layout-filling",
+        prefix: "/tool/",
+        children: [
+            {text: "nvm", icon: "smile", link: "nvm"},
+        ]
+    },
+    {
         text: "博文",
         icon: "layout-filling",
         prefix: "/document/",
