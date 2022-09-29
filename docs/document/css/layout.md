@@ -6,6 +6,7 @@ category:
 
 # 布局
 
+## 飞翼布局
 ::: normal-demo 飞翼布局
 
 ```html
@@ -36,7 +37,7 @@ category:
 ```
 
 :::
-
+## 垂直居中
 ::: normal-demo 垂直居中(flex)
 
 ```html
