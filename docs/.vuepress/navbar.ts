@@ -50,6 +50,13 @@ export default navbar([
                 ],
             },
             {
+                text: "正则表达式",
+                prefix: "regExp/",
+                children: [
+                    {text: "正则表达式", icon: "run-in", link: "regExp"},
+                ],
+            },
+            {
                 text: "git",
                 prefix: "git/",
                 children: [

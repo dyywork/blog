@@ -42,6 +42,13 @@ export default sidebar({
             children: ["layout", "styleIssues"],
         },
         {
+            text: "正则表达式",
+            icon: "run-in",
+            prefix: "/document/regExp/",
+            collapsable: true,
+            children: ["regExp"],
+        },
+        {
             text: "git",
             icon: "navigation",
             prefix: "/document/git/",
