@@ -81,7 +81,4 @@ export default defineUserConfig({
             },
         },
     }),
-    extendsBundlerOptions: (config, app) => {
-        addViteSsrNoExternal ({ app, config }, 'vuepress-shared')
-    },
 })
