@@ -6,8 +6,6 @@ import navbar from './navbar'
 
 import { addViteSsrNoExternal } from 'vuepress-shared';
 
-
-
 export default defineUserConfig({
     lang: 'zh-CN',
     title: '莫名点',
@@ -36,6 +34,7 @@ export default defineUserConfig({
             red: "#f26d6d",
             orange: "#fb9b5f",
         },
+
         plugins: {
             blog: {
                 autoExcerpt: true,
@@ -67,7 +66,6 @@ export default defineUserConfig({
                 // serverURL: "https://vuepress-theme-hope-comment.vercel.app",
             },
             mdEnhance: {
-                enableAll: false,
                 demo: true,
                 mark: true,
                 flowchart: true,
