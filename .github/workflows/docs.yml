@@ -23,7 +23,7 @@ jobs:
       - name: 设置 Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 14
+          node-version: 16
           cache: npm
 
       - name: 安装依赖
