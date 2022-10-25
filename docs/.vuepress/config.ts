@@ -4,7 +4,12 @@ import { hopeTheme} from "vuepress-theme-hope";
 import sidebar from './sidebar'
 import navbar from './navbar'
 
+import { addViteSsrNoExternal } from 'vuepress-shared';
+
 export default defineUserConfig({
+    extendsBundlerOptions: (config, app) => {
+        addViteSsrNoExternal ({ app, config }, 'vuepress-shared');
+    },
     lang: 'zh-CN',
     title: '莫名点',
     description: '问题汇总',
