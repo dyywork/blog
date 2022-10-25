@@ -3,7 +3,7 @@ home: true
 layout: Blog
 icon: home-filling
 title: 博客主页
-bgImage: /one.jpg
+bgImage: /bg.svg
 heroText: 莫名点
 heroFullScreen: true
 tagline: 日常问题集锦
