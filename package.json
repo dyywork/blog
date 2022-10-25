@@ -15,7 +15,7 @@
     "markdown-it-container": "3.0.0",
     "vue": "3.2.38",
     "vuepress-plugin-md-enhance": "^2.0.0-beta.113",
-    "vuepress-theme-hope": "^2.0.0-beta.110"
+    "vuepress-theme-hope": "2.0.0-beta.110"
   },
   "dependencies": {
     "@vuepress/client": "^2.0.0-beta.52",
