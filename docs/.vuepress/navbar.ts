@@ -38,7 +38,7 @@ export default navbar([
                 children: [
                     {text: "this",icon: "text",link: "THIS"},
                     {text: "面向对象",  link: "Object"},
-                    {text: "垃圾回收",  link: "README.md"},
+                    {text: "Javascript 杂项",  link: "README.md"},
                 ],
             },
             {
