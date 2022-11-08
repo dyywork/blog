@@ -11,7 +11,7 @@ category:
 
 ## 版本回退
 ### 1. 运行git reflog 查看你的历史变更记录， 如下
-<img src="./img/img.png"/>
+![Alt](./img/img.png "图片标题")
 
 ### 2. 然后用 `git reset --hard HEAD@{n}` (n是你要回退的引用位置) 回退；比如上图可运行 `git reset --hard 48e3759`
 
@@ -57,7 +57,7 @@ git commit --amend # 最终你只会有一个提交——第二次提交将代�
 
 ## 撤消对文件的修改
 
-<img src="./img/img_1.png"/>
+![Alt](./img/img_1.png "图片标题")
 
 - 如上图 <span style="color: red">Changes not staged for commit</span>（已更改）的文件
 
