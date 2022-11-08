@@ -173,7 +173,6 @@ category:
     class Draw{
         constructor(selector,width, height) {
             this.element = document.querySelector(selector);
-            console.log(this.element);
             this.canvas = this.element.getContext('2d');
             this.element.width = width;
             this.element.height = height;

@@ -60,7 +60,7 @@ export default navbar([
                 text: "git",
                 prefix: "git/",
                 children: [
-                    {text: "规范git commit 格式",icon: "navigation", link: "COMMIT"},
+                    {text: "Git 命令",icon: "navigation", link: "COMMIT"},
                 ],
             },
             {
