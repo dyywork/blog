@@ -39,7 +39,7 @@ export default sidebar({
             icon: "run-in",
             prefix: "/document/css/",
             collapsable: true,
-            children: ["layout", "styleIssues"],
+            children: ["layout", "cssShow", "styleIssues"],
         },
         {
             text: "正则表达式",

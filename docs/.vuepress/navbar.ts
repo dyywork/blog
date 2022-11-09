@@ -20,7 +20,7 @@ export default navbar([
                 prefix: "react/",
                 children: [
                     {text: "react 生命周期", icon: "smile", link: "interview"},
-                    {text: "Hooks",  link: "hook"},
+                    {text: "Hooks", link: "hook"},
                     {text: "高阶组件",  link: "higherComponent"},
                 ],
             },

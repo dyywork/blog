@@ -162,7 +162,7 @@ category:
   <button id="clear">清空</button>
   <input type="color" id="color">
 </div>
-<canvas  style="border: 1px #000 solid;" id="canvas"></canvas>
+<canvas  style="border: 1px #000 solid;" id="canvasDom"></canvas>
 ```
 
 ```js
@@ -241,7 +241,7 @@ category:
         }
     }
 
-    const g = new Draw('#canvas', 600, 500);
+    const g = new Draw('#canvasDom', 600, 500);
     g.init('#000');
 
     submitDom.onclick = () => {
