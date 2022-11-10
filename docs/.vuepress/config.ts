@@ -11,7 +11,7 @@ export default defineUserConfig({
     base: '/blog/',
     theme: hopeTheme({
         hostname: 'https://dyywork.github.io',
-        iconAssets: "//at.alicdn.com/t/c/font_3631218_789kiskmt88.css",
+        iconAssets: "//at.alicdn.com/t/c/font_3631218_w2at0p33tq.css",
         fullscreen: true,
         repo: "https://github.com/dyywork/blog",
         repoLabel: "GitHub",
