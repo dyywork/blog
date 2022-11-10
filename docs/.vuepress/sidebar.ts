@@ -31,7 +31,7 @@ export default sidebar({
             icon: "navigation",
             prefix: "/document/git/",
             collapsable: true,
-            children: ["COMMIT"],
+            children: ["COMMIT","branch"],
         },
         {
             text: "http",
