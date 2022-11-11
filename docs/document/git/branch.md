@@ -27,6 +27,9 @@ git checkout -b <newbranchname>
 现在分支存在这种关系，我们需要将 `hotfix`, `iss53` 分支合并到主分支 `master` 中。
 ![分支图片](./img/img_2.png '分支图片1')
 
+你可以简单地使用 git log 命令查看分叉历史。 运行 git log --oneline --decorate --graph
+--all 
+
 我们先将 `hotfix` 分支合并到 `master`
 ```shell
 $ git checkout master
@@ -131,3 +134,64 @@ Conflicts:
 # modified: index.html
 #
 ```
+## 远程分支
+地获得远程引用的完整列表或远程分支的更多信息
+```shell
+git ls-remote <remote> # 地获得远程引用的完整列表
+git remote show <remote> # 远程分支的更多信息
+```
+远程分支 `git clone` 之后服务器与本地仓库如下图；
+
+ ![分支图片](./img/img_6.png '分支图片5')
+ 
+如果你在本地`master` 分支上做了一些工作，同一时间，有人跟新了他的`master`分支到`master`, 即便这样，只要你保持不与`origin`服务器链接（并拉去数据），你的`origin/master`指针就不会移动
+
+![分支图片](./img/img_7.png '分支图片7')
+
+### 拉取
+
+```shell
+git fetch <remote> # 远程仓库同步数据
+git pull <remote> # 在大多数情况下它的含义是一个 `git fetch` 紧接着一个 `git merge` 命令
+```
+::: info 拉取
+当 git fetch 命令从服务器上抓取本地没有的数据时，它并不会修改工作目录中的内容。 它只会获取数据然
+后让你自己合并。 然而，有一个命令叫作 git pull 在大多数情况下它的含义是一个 git fetch 紧接着一个
+git merge 命令。 如果有一个像之前章节中演示的设置好的跟踪分支，不管它是显式地设置还是通过 clone
+或 checkout 命令为你创建的，git pull 都会查找当前分支所跟踪的服务器与分支， 从服务器上抓取数据然
+后尝试合并入那个远程分支。
+由于 git pull 的魔法经常令人困惑所以通常单独显式地使用 fetch 与 merge 命令会更好一些。
+:::
+
+### 删除远程分支
+```shell
+$ git push origin --delete serverfix
+To https://github.com/schacon/simplegit
+ - [deleted] serverfix
+```
+
+## 变基
+![分支图片](./img/img_8.png '分支图片')
+```shell
+$ git checkout experiment
+$ git rebase master
+First, rewinding head to replay your work on top of it...
+Applying: added staged command
+```
+![分支图片](./img/img_9.png '分支图片')
+```shell
+$ git checkout master
+$ git merge experiment
+```
+![分支图片](./img/img_10.png '分支图片')
+
+### 变基的风险
+::: info 注
+呃，奇妙的变基也并非完美无缺，要用它得遵守一条准则：  
+**如果提交存在于你的仓库之外，而别人可能基于这些提交进行开发，那么不要执行变基。**   
+如果你遵循这条金科玉律，就不会出差错。 否则，人民群众会仇恨你，你的朋友和家人也会嘲笑你，唾弃你。
+变基操作的实质是丢弃一些现有的提交，然后相应地新建一些内容一样但实际上不同的提交。 如果你已经将提
+交推送至某个仓库，而其他人也已经从该仓库拉取提交并进行了后续工作，此时，如果你用 git rebase 命令
+重新整理了提交并再次推送，你的同伴因此将不得不再次将他们手头的工作与你的提交进行整合，如果接下来你
+还要拉取并整合他们修改过的提交，事情就会变得一团糟
+:::
