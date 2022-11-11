@@ -14,7 +14,7 @@ tag:
 
 ## 版本回退
 ### 1. 运行git reflog 查看你的历史变更记录， 如下
-![Alt](./img/img.png "图片标题")
+![这是图片](./img/img.png "图1")
 
 ### 2. 然后用 `git reset --hard HEAD@{n}` (n是你要回退的引用位置) 回退；比如上图可运行 `git reset --hard 48e3759`
 
