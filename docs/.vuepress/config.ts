@@ -9,6 +9,7 @@ export default defineUserConfig({
     title: '莫名点',
     description: '问题汇总',
     base: '/blog/',
+    port: 8888,
     theme: hopeTheme({
         hostname: 'https://dyywork.github.io',
         iconAssets: "//at.alicdn.com/t/c/font_3631218_w2at0p33tq.css",
@@ -69,6 +70,7 @@ export default defineUserConfig({
                 flowchart: true,
                 tasklist: true,
                 tabs: true,
+                codetabs: true,
                 presentation: {
                     plugins: ["highlight", "math", "search", "notes", "zoom"],
                 },
