@@ -85,7 +85,7 @@ export default sidebar({
             icon: "text",
             prefix: "/document/js/",
             collapsable: true,
-            children: ["THIS", "Object",'README.md','designModel.md'],
+            children: ["THIS", "Object",'README.md','designModel.md', 'jsShow.md'],
         },
     ]
 })
