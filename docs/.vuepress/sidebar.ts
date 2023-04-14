@@ -65,7 +65,7 @@ export default sidebar({
             icon: "security",
             prefix: "/document/vue2/",
             collapsable: true,
-            children: ["vue", "COMPONENTS"],
+            children: ["vue", "COMPONENTS", "vue面试题"],
         },
     ],
     '/document/react/': [

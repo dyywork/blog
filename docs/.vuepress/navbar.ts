@@ -69,6 +69,7 @@ export default navbar([
         children: [
             {text: "vue 问题集合", icon: "security", link: "vue"},
             {text: "组件库搭建", icon: "zujian",  link: "COMPONENTS"},
+            {text: "vue 面试题", icon: "image-text",  link: "vue面试题"},
         ],
     },
     {
@@ -89,6 +90,14 @@ export default navbar([
             {text: "布局", icon: "bujufangshi", link: "layout"},
             {text: "CSS 效果", icon: "huodongzhanshi",  link: "cssShow"},
             {text: "样式问题", icon: 'bug',  link: "styleIssues"},
+        ]
+    },
+    {
+        text: "小程序",
+        icon: 'CSS-copy',
+        prefix: "/weixin/",
+        children: [
+            {text: "小程序", icon: "bujufangshi", link: "xiaochengxu"},
         ]
     },
 
