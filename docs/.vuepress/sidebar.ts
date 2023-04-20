@@ -46,7 +46,7 @@ export default sidebar({
             prefix: "/document/performance/",
             collapsable: true,
             children: ["performance"],
-        }
+        },
     ],
     '/document/css/': [
         '/',
@@ -85,7 +85,7 @@ export default sidebar({
             icon: "text",
             prefix: "/document/js/",
             collapsable: true,
-            children: ["THIS", "Object",'README.md','designModel.md', 'jsShow.md'],
+            children: ["THIS", "Object",'README.md','designModel.md', 'jsShow.md',"eventLoop.md"],
         },
     ]
 })

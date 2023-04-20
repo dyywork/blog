@@ -25,6 +25,21 @@ git reset --hard {commitHashId} # 回退到某个版本
 git revert --n {commitHashId} # 回退到某一个commit,会生成一个新的版本,反转覆盖掉原来的提交代码
 ```
 
+### 3. commit 后的东西想取消
+
+```shell
+git reset --soft HEAD^   # 如果想把add 一起取消就把 --soft 改成 --hard
+```
+`HEAD^ `表示上一个版本，即上一次的commit 也可以写成HEAD~1 如果进行两次commit ，都想撤回，可以使用HEAD~2  
+
+–soft  
+不删除工作空间的改动代码 ，撤销commit，不撤销git add file  
+
+–hard  
+删除工作空间的改动代码，撤销commit且撤销add  
+
+
+
 ## 用户名，邮箱设置
 ```shell
 # 查看用户和邮箱
