@@ -8,7 +8,7 @@ export default sidebar({
             icon: "smile",
             prefix: "/tool/",
             collapsable: true,
-            children: ["nvm", "verdaccio", "vpn"],
+            children: ["nvm", "verdaccio", "vpn", 'jenkins'],
         },
     ],
     '/document/': [
