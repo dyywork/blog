@@ -1,7 +1,7 @@
 ---
-date: 2022-09-28
+date: 2023-07-06
 category:
-- tool
+- jenkins
 ---
 
 # jenkins

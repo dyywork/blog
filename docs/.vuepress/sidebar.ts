@@ -4,11 +4,11 @@ export default sidebar({
     '/tool/': [
         '/',
         {
-            text: "nvm",
-            icon: "smile",
+            text: "工具",
+            icon: "tools-hardware",
             prefix: "/tool/",
             collapsable: true,
-            children: ["nvm", "verdaccio", "vpn", 'jenkins'],
+            children: ["nvm", "verdaccio", "vpn", 'jenkins', 'pm2'],
         },
     ],
     '/document/': [
@@ -51,7 +51,7 @@ export default sidebar({
     '/document/css/': [
         '/',
         {
-            text: "CSS",
+            text: "CSS小记",
             icon: "smile",
             prefix: "/document/css/",
             collapsable: true,
@@ -61,7 +61,7 @@ export default sidebar({
     '/document/vue2/': [
         '/',
         {
-            text: "vue",
+            text: "vue小记",
             icon: "security",
             prefix: "/document/vue2/",
             collapsable: true,
@@ -71,7 +71,7 @@ export default sidebar({
     '/document/react/': [
         '/',
         {
-            text: "react",
+            text: "react小记",
             icon: "React",
             prefix: "/document/react/",
             collapsable: true,
