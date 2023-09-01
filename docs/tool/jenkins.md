@@ -25,6 +25,15 @@ category:
   ![](./img/img_11.png)
 - 项目配置
   ![](./img/img_13.png)
+
+### 私有项目git发布配置
+- 添加全局凭据
+
+  ![](./img/img_15.png)
+- 添加凭据id
+
+  ![](./img/img_14.png)
+
 - 流水线命令
 ```shell
 
