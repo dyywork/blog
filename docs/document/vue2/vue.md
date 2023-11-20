@@ -27,4 +27,14 @@ tag:
 
 ### 复选
 
-- 需先拿到已选数据，已选数据中必包含 `row-key` 对应的字段，其他随意，若有自定义字段需同样返回
+- 需先拿到已选数据 `list`，在获取列表数据 `getList()` ,已选数据中必包含 `row-key` 对应的字段，其他随意，若有自定义字段需同样返回
+
+```js
+
+	this.$refs.table.clearSelection()
+	this.list.forEach(item => {
+		this.$refs.table.toggleRowSelection(item, false)
+	})
+	this.getList()
+
+```
