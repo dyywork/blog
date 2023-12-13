@@ -29,3 +29,11 @@ npm cache clean --force
 [flex 小游戏](http://flexboxfroggy.com/)
 [js 小游戏](https://codepip.com/games/sherlock-scopes/)
 [js 面试题](https://jschallenger.com/)
+
+## pnpm 安装到指定工作区间
+
+``` bash
+pnpm add markdown-it-container --filter d-ui-plus
+```
+
+`d-ui-plus` 为package.json中的name
