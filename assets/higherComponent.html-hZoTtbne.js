@@ -1,0 +1,1 @@
+import{_ as t}from"./plugin-vue_export-helper-x3n3nnut.js";import{o,c as r,b as e,d as a}from"./app-IytPCrKb.js";const n={},c=e("h1",{id:"高阶组件",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#高阶组件","aria-hidden":"true"},"#"),a(" 高阶组件")],-1),s=[c];function _(d,h){return o(),r("div",null,s)}const m=t(n,[["render",_],["__file","higherComponent.html.vue"]]);export{m as default};
