@@ -104,3 +104,7 @@ pnpm link --dir ../ui-admin
 ::: details
 详情容器
 :::
+
+::: caution
+危险容器
+:::
