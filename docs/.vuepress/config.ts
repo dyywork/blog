@@ -30,10 +30,18 @@ export default defineUserConfig({
         pageInfo: ["Author", "Original", "Date", "Category", "Tag", "ReadingTime","Word","PageView"],
 
         plugins: {
-            docsearch: {
-                appId: 'ZQXQTNH9KY',
-                apiKey: '12ecf59ca1e92335d592c0ebbf176498',
-                indexName: 'dyyworkio',
+            searchPro:{
+                indexContent: true, // 索引全部内容
+                customFields: [ // 为分类和标签添加索引
+                    {
+                        formatter: "分类：$content",
+                        getter: (page) => page.frontmatter.category as string | string[] | null,
+                    },
+                    {
+                        formatter: "标签：$content",
+                        getter: (page) => page.frontmatter.tag as string | string[] | null,
+                    },
+                ],
             },
             blog: {
                 excerptLength: true,
