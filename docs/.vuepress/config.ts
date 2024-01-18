@@ -28,17 +28,17 @@ export default defineUserConfig({
         sidebar: sidebar,
         navbar: navbar,
         pageInfo: ["Author", "Original", "Date", "Category", "Tag", "ReadingTime","Word","PageView"],
-        themeColor: {
-            green: "#3eaf7c",
-            red: "#f26d6d",
-            orange: "#fb9b5f",
-        },
 
         plugins: {
-            blog: {
-                autoExcerpt: true,
+            docsearch: {
+                appId: 'ZQXQTNH9KY',
+                apiKey: '12ecf59ca1e92335d592c0ebbf176498',
+                indexName: 'dyyworkio',
             },
-
+            blog: {
+                excerptLength: true,
+            },
+            
             // 如果你不需要评论，可以直接删除 comment 配置，
             // 以下配置仅供体验，如果你需要评论，请自行配置并使用自己的环境，详见文档。
             // 为了避免打扰主题开发者以及消耗他的资源，请不要在你的正式环境中直接使用下列配置!!!!!
@@ -71,14 +71,12 @@ export default defineUserConfig({
                 tasklist: true,
                 tabs: true,
                 codetabs: true,
-                presentation: {
-                    plugins: ["highlight", "math", "search", "notes", "zoom"],
-                },
                 // 启用图片标记
-                imageMark: true,
+                imgMark: true,
                 // 启用图片大小
-                imageSize: true,
+                imgSize: true,
             },
+        
         },
     }),
 })
