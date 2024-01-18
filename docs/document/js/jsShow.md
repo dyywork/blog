@@ -57,7 +57,7 @@ document.querySelector('#btn_end').addEventListener('click', () => {
 
 ```html
 <button id="btn_start">开始</button>
-<video width="600" height="300" autoplay id="video"></video>
+<video width="600" height="300" autoplay id="video" style="transform: rotateY(180deg);"></video>
 ```
 
 ```js
