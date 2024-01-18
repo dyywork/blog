@@ -8,6 +8,10 @@ export default navbar([
         prefix: "/tool/",
         children: [
             {text: "nvm", icon: "smile", link: "nvm"},
+            {text: "verdaccio", icon: "caps-lock", link: "verdaccio"},
+            {text: "vpn", icon: "navigation", link: "vpn"},
+            {text: "jenkins", icon: "layers", link: "jenkins"},
+            {text: "pm2", icon: "data-view", link: "pm2"},
         ]
     },
     {

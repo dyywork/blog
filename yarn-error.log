@@ -1,0 +1,53 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\dingyongya\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add -D @vuepress/plugin-docsearch@next
+
+PATH: 
+  C:\Users\dingyongya\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\dingyongya\bin;C:\Python310\Scripts;C:\Python310;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\Git\cmd;C:\Program Files (x86)\NetSarang\Xshell 7;C:\Program Files (x86)\NetSarang\Xftp 7;C:\Program Files\TortoiseSVN\bin;C:\Users\dingyongya\AppData\Roaming\npm;C:\ProgramData\chocolatey\bin;C:\Users\dingyongya\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\software\jdk1.8.0_101\bin;C:\software\微信web开发者工具\dll;C:\Users\dingyongya\AppData\Local\Programs\Python\Python311\Scripts;C:\Users\dingyongya\AppData\Local\Programs\Python\Python311;C:\Users\dingyongya\AppData\Local\Microsoft\WindowsApps;C:\software\WebStorm 2021.2.2\bin;C:\Users\dingyongya\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\dingyongya\AppData\Roaming\npm;C:\Users\dingyongya\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+
+Yarn version: 
+  1.22.17
+
+Node version: 
+  18.16.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: Client network socket disconnected before secure TLS connection was established
+      at connResetException (node:internal/errors:717:14)
+      at TLSSocket.onConnectEnd (node:_tls_wrap:1595:19)
+      at TLSSocket.emit (node:events:525:35)
+      at endReadableNT (node:internal/streams/readable:1359:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+
+npm manifest: 
+  {
+    "name": "blog",
+    "version": "1.0.1",
+    "main": "index.js",
+    "author": {
+      "name": "dingyongya"
+    },
+    "license": "MIT",
+    "scripts": {
+      "dev": "vuepress dev docs",
+      "build": "vuepress build docs"
+    },
+    "devDependencies": {
+      "@vuepress/plugin-register-components": "2.0.0-rc.0",
+      "markdown-it-container": "3.0.0",
+      "vue": "^3.4.14",
+      "vuepress-theme-hope": "2.0.0-rc.11"
+    },
+    "dependencies": {
+      "@vuepress/client": "2.0.0-rc.0",
+      "vuepress": "2.0.0-rc.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
