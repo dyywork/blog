@@ -28,7 +28,11 @@ export default defineUserConfig({
         sidebar: sidebar,
         navbar: navbar,
         pageInfo: ["Author", "Original", "Date", "Category", "Tag", "ReadingTime","Word","PageView"],
-
+        encrypt: {
+            config: {
+                '/document/softExamination/soft.html': 'ding123456'
+            }
+        },
         plugins: {
             searchPro:{
                 indexContent: true, // 索引全部内容
@@ -73,6 +77,7 @@ export default defineUserConfig({
                 // serverURL: "https://vuepress-theme-hope-comment.vercel.app",
             },
             mdEnhance: {
+                mermaid: true,
                 demo: true,
                 mark: true,
                 flowchart: true,

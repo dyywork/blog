@@ -104,5 +104,12 @@ export default navbar([
             {text: "小程序", icon: "bujufangshi", link: "xiaochengxu"},
         ]
     },
-
+    {
+        text: "软考小记",
+        icon: 'CSS-copy',
+        prefix: "/document/softExamination/",
+        children: [
+            {text: "思维导图", icon: "bujufangshi", link: "soft"},
+        ]
+    },
 ])

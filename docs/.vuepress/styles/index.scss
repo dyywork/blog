@@ -15,3 +15,9 @@
 .code-demo-container{
   position: static !important;
 }
+
+// 思维导图加粗改变颜色
+tspan[font-weight="bold"]{
+  color: #f26d6d !important;
+  fill: #f26d6d !important;
+}
