@@ -10,7 +10,10 @@ category:
 ## VPN 命令
 
 ```shell
-export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
+# powershell命令
+$env:HTTP_PROXY="http://127.0.0.1:7897"; $env:HTTPS_PROXY="http://127.0.0.1:7897"
+# 测试命令行vpn是否通
+curl https://www.google.com
 ```
 
 ## 生成文件目录
