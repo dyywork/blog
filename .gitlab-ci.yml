@@ -1,5 +1,5 @@
 # 选择你要使用的 docker 镜像
-image: node:14-buster
+image: node:18-buster
 
 pages:
   # 每当 push 到 main 分支时触发部署
