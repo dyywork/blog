@@ -21,9 +21,9 @@ jobs:
 
 
       - name: 设置 Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v1
         with:
-          node-version: 20
+          node-version: 18
           cache: npm
 
       - name: 安装依赖
