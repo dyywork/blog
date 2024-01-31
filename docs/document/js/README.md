@@ -9,6 +9,123 @@ tag:
 
 # JavaScript 杂项
 
+## 数字格式化
+
+```js
+const str = '10000000000.3782'
+// 1,000,000,000,000.3,782
+const num = str.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+console.log(num) //  10,000,000,000.3,782
+```
+
+## 数字转中文
+
+::: normal-demo 数字转中文
+
+```html
+<input type="number" id="num" value="888888"/>
+<p id="very"></p>
+<p id="veryBig"></p>
+```
+
+```js
+document.querySelector("#num").oninput = initNum()
+initNum()
+
+function initNum() {
+    let num = document.querySelector("#num").value
+    document.querySelector("#very").innerHTML = numToChinese(num)
+    document.querySelector("#veryBig").innerHTML = numToBigChinese(num)
+}
+
+function numToChinese(num) {
+    let chineseNum = ''
+    const temp = num.replace(/\B(?=(\d{4})+(?!\d))/g, ',').split(',').filter(Boolean)
+    const map = ["零",'一','二','三','四','五','六','七','八','九'];
+    const units = ['','十','百','千']
+    function _removeZero(n) {
+        return n.replace(/零+/, '零').replace(/零$/, '')
+    }
+    function _transformChinese(n) {
+        let result = '';
+        for (let i = 0; i < n.length; i++) {
+            const c = map[n[i]]
+            let u = units[n.length -i - 1]
+            if (c === '零') {
+                u = ''
+            }
+            result += c + u
+        }
+        result = _removeZero(result)
+        return result
+    }
+    const bigUnit = ['','万','亿','万亿','亿亿','万亿亿']
+    for (let i = 0; i < temp.length; i++) {
+        const p = temp[i];
+        let c =  _transformChinese(p)
+        if (c === '') {
+            chineseNum = '零'
+            continue;
+        }
+        const u = bigUnit[temp.length - i - 1]
+        chineseNum += c + u
+    }
+    chineseNum = _removeZero(chineseNum)
+    return chineseNum
+}
+
+function numToBigChinese(num) {
+    const cnum = numToChinese(num)
+    let map = {
+        "零": "零",
+        "一": "壹",
+        "二": "贰",
+        "三": "叁",
+        "四": "肆",
+        "五": "伍",
+        "六": "陆",
+        "七": "柒",
+        "八": "捌",
+        "九": "玖",
+        "十": "拾",
+        "百": "佰",
+        "千": "仟",
+        "万": "萬",
+        "亿": "億",
+    }
+    return cnum.split('').map((item) => map[item]).join('')
+}
+
+```
+
+```css
+#num {
+    width: 200px;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 20px;
+    padding-left: 10px;
+}
+p{
+    font-size: 20px;
+    font-weight: bold;
+}
+#num:focus {
+    border: 1px solid #2196f3;
+}
+#num[type=number]::-webkit-inner-spin-button, 
+#num[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none;
+  margin: 0; 
+}
+#num[type=number] {
+    -moz-appearance:textfield;
+}
+```
+
+:::
+
 ## let,const
 
 - let 声明的变量只在let命令所在的代码块内有效
@@ -45,20 +162,24 @@ JavaScript在执行之前会有一个 `预编译` 过程，变量提升和函数
 
 ## 防抖
 
-
 ## 节流
 
 ## 垃圾回收
 
 ### 1.标记清除
+
 `“标记清除”` 是目前主流的垃圾收集算法，这种算法的思想就是给当前不使用的值加上标记，然后再回收其内存
+
 ### 2.引用计数
+
 `“引用计数”`跟踪记录所有值被引用的次数
 （注： `JavaScript`引擎目前都不在使用这种算法，当代码中存在循环引用现象时，`‘引用计数’`算法会导致问题）
 
 ### 3.优化
+
 解除变量的引用不仅有助于消除循环引用现象，而且对垃圾收集也有好处。为了确保有效地回收内存，应该
 及时解除不再使用的全局对象，全局对象属性以及循环引用变量的引用。
 
 ### 4.小计
+
 函数内的变量在函数执行完之后，变量所占内存就会释放
