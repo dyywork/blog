@@ -20,6 +20,7 @@ export default defineUserConfig({
         repoDisplay: true,
         docsDir: "blog",
         logo: "/logo.png",
+        favicon: '/favicon.ico',
         footer: "一个个人问题集锦收录！！！",
         author: 'Mr.Ding',
         lastUpdated: true,
