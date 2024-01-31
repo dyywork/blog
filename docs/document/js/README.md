@@ -23,29 +23,65 @@ console.log(num) //  10,000,000,000.3,782
 ::: normal-demo 数字转中文
 
 ```html
-<input type="number" id="num" value="888888"/>
+<div class="title">中文统计金额</div>
+<input type="number" id="num" value="888888.6666"/>
 <p id="very"></p>
 <p id="veryBig"></p>
+
+<div class="title">数字转中文</div>
+
+<p id="very1"></p>
+<p id="veryBig1"></p>
 ```
 
 ```js
-document.querySelector("#num").oninput = initNum()
+document.querySelector("#num").oninput = () => {
+    initNum()
+}
 initNum()
 
 function initNum() {
     let num = document.querySelector("#num").value
-    document.querySelector("#very").innerHTML = numToChinese(num)
-    document.querySelector("#veryBig").innerHTML = numToBigChinese(num)
+    document.querySelector("#very").innerHTML = numToChinese(num, true)
+    document.querySelector("#veryBig").innerHTML = numToBigChinese(num, true)
+    document.querySelector("#very1").innerHTML = numToChinese(num)
+    document.querySelector("#veryBig1").innerHTML = numToBigChinese(num)
 }
 
-function numToChinese(num) {
+function numToChinese(num, type) {
     let chineseNum = ''
-    const temp = num.replace(/\B(?=(\d{4})+(?!\d))/g, ',').split(',').filter(Boolean)
+    let chinesePoint = ''
+    let point = ''
+    let temp = num.replace(/\B(?=(\d{4})+(?!\d))/g, ',').split(',').filter(Boolean)
+    if (num.indexOf('.') !== -1){
+        temp = num.split('.')[0].replace(/\B(?=(\d{4})+(?!\d))/g, ',').split(',').filter(Boolean)
+        point = num.split('.')[1]
+    }
+    
     const map = ["零",'一','二','三','四','五','六','七','八','九'];
     const units = ['','十','百','千']
+    // 处理小数点
+    function _setChinesePoint(p) {
+        if (!type) {
+            return '点' + p.split('').map(n => map[n]).join('') 
+        }
+        const pointUnits = ['角','分','毫','厘']
+        for (let i = 0; i < p.slice(0, 4).length; i++) {
+            const c = map[p[i]]
+            let u = pointUnits[i]
+            if (c === '零') {
+                u =''
+            }
+            chinesePoint += c + u
+        }
+        chinesePoint = _removeZero(chinesePoint)
+        return '元' + chinesePoint
+    }
+    // 删除多余的零
     function _removeZero(n) {
         return n.replace(/零+/, '零').replace(/零$/, '')
     }
+    // 转换成中文
     function _transformChinese(n) {
         let result = '';
         for (let i = 0; i < n.length; i++) {
@@ -60,6 +96,7 @@ function numToChinese(num) {
         return result
     }
     const bigUnit = ['','万','亿','万亿','亿亿','万亿亿']
+    // 循环添加单位
     for (let i = 0; i < temp.length; i++) {
         const p = temp[i];
         let c =  _transformChinese(p)
@@ -71,11 +108,14 @@ function numToChinese(num) {
         chineseNum += c + u
     }
     chineseNum = _removeZero(chineseNum)
+    if (point) {
+     chineseNum += _setChinesePoint(point)
+    }
     return chineseNum
 }
 
-function numToBigChinese(num) {
-    const cnum = numToChinese(num)
+function numToBigChinese(num, type) {
+    const cnum = numToChinese(num, type)
     let map = {
         "零": "零",
         "一": "壹",
@@ -92,6 +132,12 @@ function numToBigChinese(num) {
         "千": "仟",
         "万": "萬",
         "亿": "億",
+        "点": "點",
+        "元": "元",
+        "角": "角",
+        "分": "分",
+        "毫": "毫",
+        "厘": "厘"
     }
     return cnum.split('').map((item) => map[item]).join('')
 }
@@ -99,6 +145,12 @@ function numToBigChinese(num) {
 ```
 
 ```css
+.title{
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #2196f3;
+}
 #num {
     width: 200px;
     height: 30px;
