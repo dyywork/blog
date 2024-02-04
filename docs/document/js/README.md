@@ -212,9 +212,115 @@ JavaScript在执行之前会有一个 `预编译` 过程，变量提升和函数
 
 :::
 
-## 防抖
+## 防抖&节流
 
-## 节流
+优化高频率执行代码的一种手段，可以防止函数被多次调用。
+
+### 防抖
+
+::: tip 定义
+防抖: n 秒后在执行该事件，若在 n 秒内被重复触发，则重新计时间
+:::
+
+简单实现
+
+```js
+function debounce(func, wait) {
+    let timeout;
+    return function () {
+        let context = this; // 保存this指向
+        let args = arguments; // 拿到event对象
+
+        clearTimeout(timeout)
+        timeout = setTimeout(function(){
+            func.apply(context, args)
+        }, wait);
+    }
+}
+```
+
+需要立即执行
+
+```js
+function debounce(func, wait, immediate) {
+    let timeout;
+    return function () {
+        let context = this; // 保存this指向
+        let args = arguments; // 拿到event对象
+        if (timeout) clearTimeout(timeout)
+        if (immediate) {
+            let callNow = immediate && !timeout;
+            timeout = setTimeout(function(){
+                timeout = null
+            }, wait)
+            if (callNow) func.apply(context, args)
+        }else {
+            timeout = setTimeout(function(){
+                func.apply(context, args)
+            }, wait)
+        }
+    }
+}
+```
+
+### 节流
+
+::: tip 定义
+节流: n 秒内只运行一次，若在 n 秒内重复触发，只有一次生效
+:::
+
+使用时间戳写法，事件会立即执行，停止触发后没有办法再次执行
+
+```js
+function throttle(func, wait) {
+    let oldTime = Date.now();
+    return function (...args) {
+        let nowTime = Date.now();
+        if (nowTime - oldTime > wait) {
+            func.apply(null, args)
+            oldTime = Date.now()
+        }
+    }
+}
+```
+
+使用定时器写法，事件不会立即执行，停止触发后可以再次执行
+
+```js
+function throttle(fn, delay = 500) {
+    let timer = null
+    return function (...args) {
+        if (!timer) {
+            timer = setTimeout(() => {
+                fn.apply(this, args)
+                timer = null
+            }, delay);
+        }
+    }
+}
+```
+
+两者结合
+
+```js
+function throttle(fn, delay) {
+    let timer = null
+    let starttime = Date.now()
+    return function () {
+        let curTime = Date.now() // 当前时间
+        let remaining = delay - (curTime - starttime)  // 从上一次到现在，还剩下多少多余时间
+        let context = this
+        let args = arguments
+        clearTimeout(timer)
+        if (remaining <= 0) {
+            fn.apply(context, args)
+            starttime = Date.now()
+        } else {
+            timer = setTimeout(fn, remaining);
+        }
+    }
+}
+```
 
 ## 垃圾回收
 

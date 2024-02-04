@@ -18,37 +18,38 @@ category:
 
 ```js
 let singleFun = (function() {
-		let instance = null;
-		function SupposeClass(args) {
-				this.name = args?.name || '李四';
-				this.age = args?.age || 18;
-				// 单例模式检测，调用多次，只打印一次
-				console.log('实例创建成功')
-		}
-		SupposeClass.prototype = {
-				constructor: SupposeClass,
-				getInfo: function() {
-						console.log(`name：${this.name}, age:${this.age}`)
-				}
-		}
-		return {
-				name: 'SupposeClass',
-				getInstance: function(args) {
-						if(instance === null) {
-								instance = new SupposeClass(args)
-						}
-						return instance;
-				}
-		}
+    let instance = null;
+    function SupposeClass(args) {
+        this.name = args?.name || '李四';
+        this.age = args?.age || 18;
+        // 单例模式检测，调用多次，只打印一次
+        console.log('实例创建成功')
+    }
+    SupposeClass.prototype = {
+        constructor: SupposeClass,
+        getInfo: function() {
+            console.log(`name：${this.name}, age:${this.age}`)
+        }
+    }
+    return {
+        name: 'SupposeClass',
+        getInstance: function(args) {
+            if(instance === null) {
+                    instance = new SupposeClass(args)
+            }
+            return instance;
+        }
+    }
 })()
 singleFun.getInstance()
 singleFun.getInstance()
 ```
-![](./img/img.png)
+
+![测试](./img/img.png)
 
 第一次创建的时候传递参数，修改内部变量
 
-![](./img/img_1.png)
+![测试](./img/img_1.png)
 
 ## 工厂模式
 
@@ -119,6 +120,7 @@ factoryTwo.getName() // 李四
 :::
 
 ## 原型模式
+
 ```javascript
 function Person(name){
     this.name = name
@@ -146,6 +148,7 @@ person1.sayName()
 ```
 
 ## 组合使用构造函数模式和原型模式
+
 ```javascript
 function Person(name, age, job) {
     this.name = name;
@@ -162,6 +165,7 @@ Person.prototype = {
 ```
 
 ## 动态原型模式
+
 ```javascript
 function Person(name, age, job) {
     this.name = name;
@@ -183,20 +187,23 @@ function Person(name, age, job) {
 这种链式调用在在开发多库和框架如jquery/zepto 中频繁被使用
 :::
 ```javascript
+
 let obj = {
     a: function () {
         console.log('aaa')
-				return this
-		},
-		b: function (){
-        console.log('bbb')
-				return this
-		}
+        return this
+    },
+    b: function (){
+    console.log('bbb')
+        return this
+    }
 }
 
 obj.a().b() // aaa  bbb
 ```
+
 ## 委托模式
+
 ::: tip
 当多个对象要处理同一请求时，可以将这些请求交由另一个对象统一处理 (事件代理)
 :::
@@ -206,19 +213,30 @@ obj.a().b() // aaa  bbb
 ```
 
 ## 数据访问对象模式
+
 ::: tip
+
 - 数据访问对象模式主要是用来抽象和封装一个对象来对数据源进行访问和储存，这样可以方便对数据的管理，以及避免数据间的重复，覆盖等问题出现。
-	:::
+
+:::
 
 ## 等待者模式
+
 ::: tip
+
 - 通过对多个异步进程的监听，对未来事件进行统一管理
-	:::
+
+:::
+
 ## MVC模式
+
 ::: tip
+
 - MVC是由三个单词的首字符组成的：分别是模型model、 视图view、 控制器controller
 - 他是一种是使用业务逻辑，数据，视图进行分离的方式来组织架构代码的一种模式
-	:::
+
+:::
+
 ```js
  var MVC = {}
     MVC.model = (function() {
