@@ -21,8 +21,8 @@ pages:
 
   # 安装依赖并运行构建脚本
   script:
-    - pnpm install --frozen-lockfile
-    - pnpm build --dest public
+    - yarn install --frozen-lockfile
+    - yarn build --dest public
 
   artifacts:
     paths:
