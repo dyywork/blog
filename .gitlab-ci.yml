@@ -13,7 +13,7 @@ pages:
 
   # 安装依赖并运行构建脚本
   script:
-    - yarn install
+    - pnpm install
     - yarn build --dest public
 
   artifacts:
