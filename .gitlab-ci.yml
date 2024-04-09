@@ -8,14 +8,23 @@ pages:
 
   # 缓存 node_modules
   cache:
+    key:
+      files:
+        - pnpm-lock.yaml
     paths:
-      - node_modules/
+      - .pnpm-store
+
+  # 安装 pnpm
+  before_script:
+    - curl -fsSL https://get.pnpm.io/install.sh | sh -
+    - pnpm config set store-dir .pnpm-store
 
   # 安装依赖并运行构建脚本
   script:
-    - npm install
-    - yarn build --dest public
+    - pnpm install --frozen-lockfile
+    - pnpm docs:build --dest public
 
   artifacts:
     paths:
       - public
+
