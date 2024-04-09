@@ -37,19 +37,19 @@ export default defineUserConfig({
         plugins: {
             searchPro:{
                 indexContent: true, // 索引全部内容
-                customFields: [ // 为分类和标签添加索引
-                    {
-                        formatter: "分类：$content",
-                        getter: (page) => page.frontmatter.category as string | string[] | null,
-                    },
-                    {
-                        formatter: "标签：$content",
-                        getter: (page) => page.frontmatter.tag as string | string[] | null,
-                    },
-                ],
+                // customFields: [ // 为分类和标签添加索引
+                //     {
+                //         formatter: "分类：$content",
+                //         getter: (page) => page.frontmatter.category as string | string[] | null,
+                //     },
+                //     {
+                //         formatter: "标签：$content",
+                //         getter: (page) => page.frontmatter.tag as string | string[] | null,
+                //     },
+                // ],
             },
             blog: {
-                excerptLength: true,
+                excerptLength: 300,
             },
             
             // 如果你不需要评论，可以直接删除 comment 配置，
