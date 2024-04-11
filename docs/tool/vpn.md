@@ -1,5 +1,5 @@
 ---
-date: 2024-1-17
+date: 2024-01-17
 category:
 - tool
 - vpn

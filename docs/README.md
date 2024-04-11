@@ -1,6 +1,6 @@
 ---
 home: true
-layout: Blog
+layout: BlogHome
 icon: home-filling
 title: 博客主页
 bgImage: /indexBg.png
