@@ -29,13 +29,15 @@ export default defineUserConfig({
         sidebar: sidebar,
         navbar: navbar,
         pageInfo: ["Author", "Original", "Date", "Category", "Tag", "ReadingTime","Word","PageView"],
-        encrypt: {
-            config: {
-                '/document/softExamination/soft.html': 'ding123456'
-            }
-        },
+        // encrypt: {
+        //     config: {
+        //         '/document/softExamination/soft.html': 'ding123456'
+        //     }
+        // },
         plugins: {
-            searchPro:true,
+            searchPro:{
+                indexContent: true
+            },
             blog: {
                 excerptLength: 300,
             },
