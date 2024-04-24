@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "@vuepress/plugin-register-components": "2.0.0-rc.21",
+    "flowchart.ts": "^3.0.0",
     "markdown-it-container": "3.0.0",
     "mermaid": "^10.7.0",
     "vue": "^3.4.24",
