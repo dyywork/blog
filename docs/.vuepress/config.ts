@@ -1,10 +1,14 @@
 import { defineUserConfig } from 'vuepress'
-
+import { viteBundler } from '@vuepress/bundler-vite'
 import { hopeTheme} from "vuepress-theme-hope";
 import sidebar from './sidebar'
 import navbar from './navbar'
 
 export default defineUserConfig({
+    bundler: viteBundler({
+        viteOptions: {},
+        vuePluginOptions: {},
+      }),
     lang: 'zh-CN',
     title: '莫名点',
     description: '问题汇总',
