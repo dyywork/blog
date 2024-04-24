@@ -94,6 +94,7 @@ export default navbar([
             {text: "布局", icon: "bujufangshi", link: "layout"},
             {text: "CSS 效果", icon: "huodongzhanshi",  link: "cssShow"},
             {text: "样式问题", icon: 'bug',  link: "styleIssues"},
+            {text: "flex布局", icon: 'bug',  link: "flex"},
         ]
     },
     {

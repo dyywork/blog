@@ -55,7 +55,7 @@ export default sidebar({
             icon: "smile",
             prefix: "/document/css/",
             collapsible: true,
-            children: ["layout", "cssShow", "styleIssues"],
+            children: ["layout", "cssShow", "styleIssues", "flex"],
         },
     ],
     '/document/vue2/': [
