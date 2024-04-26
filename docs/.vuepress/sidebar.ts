@@ -8,7 +8,7 @@ export default sidebar({
             icon: "tools-hardware",
             prefix: "/tool/",
             collapsible: true,
-            children: ["nvm", "verdaccio", "vpn", 'jenkins', 'pm2'],
+            children: ["nvm", "volta", "verdaccio", "vpn", 'jenkins', 'pm2'],
         },
     ],
     '/document/': [
