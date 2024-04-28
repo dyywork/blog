@@ -12,20 +12,24 @@ tag:
 [线上Dome vue-components](https://dyywork.github.io/vue-components/)
 
 ## 使用vueCli3搭建组件库
-1. 首先使用vueCli 创建一个初始化项目
-```
+
+1.首先使用vueCli 创建一个初始化项目
+
+``` bash
 vue create my-components
 ```
 
-2. 创建一个vue组件的文件夹，目录结构如下
-```
+2.创建一个vue组件的文件夹，目录结构如下
+
+``` bash
     |component
     |---oneComponent
     |---|---oneComponent.vue
     |---|---index.js
     |---index.js
 ```
-3. oneComponent.vue 如下
+
+3.oneComponent.vue 如下
 
 ```vue
     <template>
@@ -35,11 +39,11 @@ vue create my-components
     <script>
     export default {
       name: "oneComponent",
-			data() {
+   data() {
         return {
           count: 0
-				}
-			}
+    }
+   }
     }
     </script>
     
@@ -47,7 +51,9 @@ vue create my-components
     
     </style>
 ```
-4. oneComponent.vue同级目录下创建index.js
+
+4.oneComponent.vue同级目录下创建index.js
+
 ```js
 import oneComponent from "./oneComponent";
 
@@ -57,7 +63,9 @@ mgSearchForm.install = function (Vue) {
 
 export default oneComponent
 ```
-5. component 文件夹下的index.js
+
+5.component 文件夹下的index.js
+
 ```js
 import oneComponent from "./oneComponent";
 
@@ -80,23 +88,27 @@ export default {
     oneComponent,
 }
 ```
-6. 打包 
+
+6.打包
+
 ```json
  {
     "lib": "vue-cli-service build --target lib --name vueComponents --dest lib components/index.js"
   }
 ```
 
-7. 发布 发布时可通过.npmignore 来配置不想提交的文件文件夹，和.gitignore 配置一样
-```
+7.发布 发布时可通过.npmignore 来配置不想提交的文件文件夹，和.gitignore 配置一样
+
+``` bash
 npm login
 // 登录成功后
 npm publish
 ```
 
-
 ## 处理组件文档md
+
 1. 主要用到的插件
+
 ```json
     {
         "github-markdown-css": "^5.1.0",
@@ -106,7 +118,9 @@ npm publish
         "vue-template-compiler": "^2.6.14"
     }
 ```
-2. vue.config.js的配置
+
+2.vue.config.js的配置
+
 ```js
 const path = require('path')
 module.exports = {

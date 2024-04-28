@@ -10,10 +10,10 @@ tag:
 
 # Git 命令
 
-
-
 ## 版本回退
+
 ### 1. 运行git reflog 查看你的历史变更记录， 如下
+
 ![这是图片](./img/img.png "图1")
 
 ### 2. 然后用 `git reset --hard HEAD@{n}` (n是你要回退的引用位置) 回退；比如上图可运行 `git reset --hard 48e3759`
@@ -30,7 +30,8 @@ git revert --n {commitHashId} # 回退到某一个commit,会生成一个新的�
 ```shell
 git reset --soft HEAD^   # 如果想把add 一起取消就把 --soft 改成 --hard
 ```
-`HEAD^ `表示上一个版本，即上一次的commit 也可以写成HEAD~1 如果进行两次commit ，都想撤回，可以使用HEAD~2  
+
+`HEAD^`表示上一个版本，即上一次的commit 也可以写成HEAD~1 如果进行两次commit ，都想撤回，可以使用HEAD~2  
 
 –soft  
 不删除工作空间的改动代码 ，撤销commit，不撤销git add file  
@@ -38,9 +39,8 @@ git reset --soft HEAD^   # 如果想把add 一起取消就把 --soft 改成 --ha
 –hard  
 删除工作空间的改动代码，撤销commit且撤销add  
 
-
-
 ## 用户名，邮箱设置
+
 ```shell
 # 查看用户和邮箱
 git config user.name
@@ -52,6 +52,7 @@ git config user.email johndoe@example.com
 git config --global user.name "John Doe"
 git config --global user.email johndoe@example.com
 ```
+
 ::: tip 注意
 如果使用了 --global 选项，那么该命令只需要运行一次，因为之后无论你在该系统上做任何事
 情， Git 都会使用那些信息。 当你想针对特定项目使用不同的用户名称与邮件地址时，可以在那个项目目录下运
@@ -59,12 +60,15 @@ git config --global user.email johndoe@example.com
 :::
 
 ## 在提交（commit） 后发现尚未暂存某些需要修改的文件
+
 - 例如
+
 ```shell
 git commit -m 'initial commit'
 git add forgotten_file
 git commit --amend # 最终你只会有一个提交——第二次提交将代替第一次提交的结果
 ```
+
 ::: info 修复旧提交
 当你在修补最后的提交时，与其说是修复旧提交，倒不如说是完全用一个 新的提交 替换旧的
 提交， 理解这一点非常重要。从效果上来说，就像是旧有的提交从未存在过一样，它并不会
@@ -82,6 +86,7 @@ git commit --amend # 最终你只会有一个提交——第二次提交将代�
 ```shell
  git checkout --  docs/document/css/layout.md # 将撤销之前所有的修改
 ```
+
 ::: info 注
 请务必记得 `git checkout -- <file>` 是一个危险的命令。 你对那个文件在本地的任何修
 改都会消失——Git 会用最近提交的版本覆盖掉它。 除非你确实清楚不想要对那个文件的本地
@@ -93,6 +98,7 @@ git commit --amend # 最终你只会有一个提交——第二次提交将代�
 ```shell
 git fetch <remote>
 ```
+
 ::: info 注
 必须注意 git fetch 命令只会将数据下载到你的本地仓库——它并不会自动合并或修改你当前的工作。 当准备好时你必须手动将其合并入你的工作。<br/>
 git pull 通常会从最初克隆的服务器上抓取数据并自动尝试合并到当前所在的分支。
@@ -102,6 +108,7 @@ git pull 通常会从最初克隆的服务器上抓取数据并自动尝试合�
 ## 新建删除标签
 
 ### 1. 新建
+
 ```shell
 git tag # 查看标签
 git tag <tagName> # 新建轻量标签
@@ -109,12 +116,15 @@ git tag -a '标签名' # 添加新标签
 git tag -a '标签名' -m '附注' # 添加附注新标签
 git tag -a '标签名' `commitId` # 添加之前版本新标签
 ```
+
 ::: info 标签创建成功后需要推送到远程仓库
-- `git push <remote> <tagName>` 
+
+- `git push <remote> <tagName>`
 - `git push` 推送两种标签用 `git push <remote> --tags` 推送标签并不会区分轻量标签和附注标签， 没有简单的项能够让你只选择推送一种标签。
 :::
 
 ### 2. 删除
+
 ```shell
  git tag -d <tagname> # 删除一个轻量标签,删除掉本地仓库
  git push <remote> :refs/tags/<tagname> # 来更新你的远程仓库
@@ -142,7 +152,7 @@ git tag -a '标签名' `commitId` # 添加之前版本新标签
 |`git tag`  |查看标签|
 |`git tag -a '标签名'`  |添加新标签|
 |`git tag -a '标签名' -m '附注'`  |添加附注新标签|
-|`git tag -a '标签名' `commitId`  |添加之前版本新标签|
+|`git tag -a '标签名'`commitId`  |添加之前版本新标签|
 |`git stash`  |代码放进暂存区（未被commit的代码）|
 |`git stash apply` |还原|
 |`git stash drop` |清除最近一次的stash记录|
@@ -155,4 +165,3 @@ git tag -a '标签名' `commitId` # 添加之前版本新标签
 |`git remote rename 'old_name' 'new_name'`   |修改仓库名|
 
 :::
-

@@ -10,6 +10,7 @@ tag:
 # Verdaccio
 
 ## 私有npm库的特点
+
 - 私有npm仓库可以搭建在局域网内，不对外开放
 - 对于发布和下载npm包可以进行权限管理
 - 私有npm仓库可以管理私有包，不用上传到公共的npm仓库中
@@ -34,6 +35,7 @@ verdaccio是fork的sinopia，后者是最初的搭建私有npm的选择，不过
 ## Verdaccio 的搭建
 
 ### 全局安装
+
 ::: code-tabs#shell
 
 @tab:active npm
@@ -59,20 +61,24 @@ pnpm add -g verdaccio
 ![](./img/img.png)
 
 ### Docker 镜像
+
 安装完成后，你只需要执行CLI命令：
+
 ```shell
 verdaccio
 ```
+
 会输出如下结果：
 
 ![](./img/img_1.png)
 
 其中第一行是 `verdaccio` 配置文件的目录，相关配置都在config.yaml中进行配置，[verdaccio配置文件文档](https://verdaccio.org/zh-cn/docs/configuration/)
+
 ```shell
  C:\Users\dingyongya\AppData\Roaming\verdaccio\config.yaml
 ```
 
-http://localhost:4873 为 `verdaccio` 客户端的访问地址
+<http://localhost:4873> 为 `verdaccio` 客户端的访问地址
 
 ![](./img/img_2.png)
 
@@ -91,9 +97,11 @@ npm adduser --registry http://localhost:4873
 ```shell
 npm publish --registry http://localhost:4873
 ```
+
 ![](./img/img_4.png)
 
 ### 从私有仓库中下载私有包
+
 ::: code-tabs#shell
 @tab registry
 
@@ -116,15 +124,19 @@ registry=http://localhost:4873
   }
 }
 ```
+
 :::
 
-如需其他配置，请阅读 [使用私有 registry ](https://verdaccio.org/zh-CN/docs/cli-registry)部分。
+如需其他配置，请阅读 [使用私有 registry](https://verdaccio.org/zh-CN/docs/cli-registry)部分。
 
 ### 缓存 npm 公共包
+
 配置好私有仓库之后，每次我们下载公共包的时候，会自动把包文件缓存在
+
 ```shell
  C:\Users\dingyongya\AppData\Roaming\verdaccio\storage
 ```
+
 私有包也是会存在storage这个文件夹下面的，当公共包被缓存之后，再次下载的时候，会首先在这个仓库中获取，大大的加速了包文件的下载速度，但是verdaccio官网上面显示缓存的过期时间默认是2分钟，如果想避免缓存的话可以在config.yml中设置 cache：false
 
 ```shell

@@ -15,26 +15,28 @@ category:
 ### 部署node express 应用 gitee push 自动发布
 
 - 配置node 环境, 下载node, gitee插件
-  ![](./img/img_7.png)
-  ![](./img/img_6.png)
-  ![](./img/img_8.png)
-  ![](./img/img_12.png)
+  ![1](./img/img_7.png)
+  ![2](./img/img_6.png)
+  ![3](./img/img_8.png)
+  ![4](./img/img_12.png)
 - 配置系统配置
-  ![](./img/img_9.png)
-  ![](./img/img_10.png)
-  ![](./img/img_11.png)
+  ![5](./img/img_9.png)
+  ![6](./img/img_10.png)
+  ![7](./img/img_11.png)
 - 项目配置
-  ![](./img/img_13.png)
+  ![8](./img/img_13.png)
 
 ### 私有项目git发布配置
+
 - 添加全局凭据
 
-  ![](./img/img_15.png)
+  ![9](./img/img_15.png)
 - 添加凭据id
 
-  ![](./img/img_14.png)
+  ![10](./img/img_14.png)
 
 - 流水线命令
+
 ```shell
 
 pipeline {
@@ -72,6 +74,3 @@ pipeline {
 }
 
 ```
-
-
-

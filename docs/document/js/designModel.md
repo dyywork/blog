@@ -186,6 +186,7 @@ function Person(name, age, job) {
 链模式是实现链式调用的主要方法，通过在自身方法中返回自身的方式，在一个对象连续多次调用自身方法是可以简化写法。
 这种链式调用在在开发多库和框架如jquery/zepto 中频繁被使用
 :::
+
 ```javascript
 
 let obj = {
