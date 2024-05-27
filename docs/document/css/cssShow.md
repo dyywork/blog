@@ -6,6 +6,53 @@ category:
 
 # CSS 效果
 
+## 测试 动画
+
+::: normal-demo
+
+```html
+<div class="notched-rectangle">测试</div>
+```
+
+```css
+  .notched-rectangle {
+    position: relative;
+    width: 300px;
+    height: 100px;
+    background-color: #3498db;
+    margin: 50px auto;
+    border: 2px solid #2980b9;
+    line-height: 100px;
+    text-align: center;
+    font-size: 48px;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .notched-rectangle::before,
+  .notched-rectangle::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .notched-rectangle::before {
+    left: -22px; /* Adjust for border width */
+  }
+
+  .notched-rectangle::after {
+    right: -22px; /* Adjust for border width */
+  }
+
+```
+
+:::
+
 ## Loading 动画
 
 ::: normal-demo
@@ -16,9 +63,32 @@ category:
     <div></div>
     <div></div>
 </div>
+<div class="loader"></div>
+<div class="loader1"></div>
 ```
 
 ```css
+/* HTML: <div class="loader"></div> */
+.loader1 {
+  width: 6px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  animation: l5 1s infinite linear alternate;
+}
+@keyframes l5 {
+    0%  {box-shadow: 20px 0 #000, -20px 0 #0002;background: #000 }
+    33% {box-shadow: 20px 0 #000, -20px 0 #0002;background: #0002}
+    66% {box-shadow: 20px 0 #0002,-20px 0 #000; background: #0002}
+    100%{box-shadow: 20px 0 #0002,-20px 0 #000; background: #000 }
+}
+.loader {
+  width: 10px;
+  aspect-ratio: 4;
+  background: radial-gradient(circle closest-side,#000 90%,#0000) 0/calc(100%/3) 100% space;
+  clip-path: inset(0 100% 0 0);
+  animation: l1 1s steps(4) infinite;
+}
+@keyframes l1 {to{clip-path: inset(0 -34% 0 0)}}
 .loading,
 .loading > div {
   position: relative;
