@@ -9,6 +9,24 @@ tag:
 
 # JavaScript 杂项
 
+## js 运算符
+
+- `??` 逻辑运算符，当左侧的操作数为 `null` 和 `undefined` 时，返回其右侧操作数，否则返回左侧操作数
+
+``` js
+const bar = null ?? 1 // 1 
+const bar = undefined ?? 1 // 1 
+const bar = 0 ?? 1 // 0 
+```
+
+- `||` 逻辑运算符，当左侧的操作数为 `false` 时，返回其右侧操作数，否则返回左侧操作数;能够转化为false 的表达式 `null` 、`NaN` 、 `0` 、 `空字符串` 、 `undefined`
+
+``` js
+const bar = null || 1 // 1 
+const bar = undefined || 1 // 1 
+const bar = 0 || 1 // 1 
+```
+
 ## javascript 运算
 
 ```mermaid
