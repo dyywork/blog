@@ -103,13 +103,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 任何因包含合并冲突而有待解决的文件，都会以未合并状态标识出来.打开冲突文件文件中会有一些特殊区段，就像下面
 
 ```html
-<<<<<<< HEAD:index.html
 <div id="footer">contact : email.support@github.com</div>
-=======
-<div id="footer">
- please contact us at support@github.com
-</div>
->>>>>>> iss53:index.html
 ```
 
 这表示 HEAD 所指示的版本（也就是你的 master 分支所在的位置，因为你在运行 merge 命令的时候已经检出
