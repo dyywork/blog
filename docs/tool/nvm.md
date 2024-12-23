@@ -24,3 +24,35 @@ nvm use <node版本> // 使用指定版本node
 nvm node_mirror https://npmmirror.com/mirrors/node/
 nvm npm_mirror https://npmmirror.com/mirrors/npm/
 ```
+
+## nrm
+
+::: tip
+nrm 是 node 版本管理工具，用于管理 npm 源
+:::
+
+## 安装
+
+```shell
+npm install -g nrm
+```
+
+### 查看当前源
+
+```shell
+$ nrm ls
+* npm ---------- https://registry.npmjs.org/
+  yarn --------- https://registry.yarnpkg.com/
+  tencent ------ https://mirrors.tencent.com/npm/
+  cnpm --------- https://r.cnpmjs.org/
+  taobao ------- https://registry.npmmirror.com/
+  npmMirror ---- https://skimdb.npmjs.com/registry/
+  huawei ------- https://repo.huaweicloud.com/repository/npm/
+```
+
+### 切换源
+
+```shell
+$ nrm use taobao
+Switch to registry https://registry.npmmirror.com/
+```
