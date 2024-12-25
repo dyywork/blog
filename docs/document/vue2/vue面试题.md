@@ -13,6 +13,6 @@ category:
 ## 清除掉源码中没有使用的方法和css样式
 
 1. 删除无用js代码
-使用 `Tree Shaking`  
+使用 `Tree Shaking` 树摇优化  限制: js ESM 模块
 2. 删除无用css样式
-使用 `PurgeCSS`
+使用 `PurgeCSS` （CSS 原子化）
