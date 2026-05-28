@@ -24,7 +24,7 @@ export default sidebar({
             icon: "canvas",
             prefix: "/document/canvas/",
             collapsible: true,
-            children: ["canvasDraw"],
+            children: ["canvasDraw", "prepaid-card-poster"],
         },
         {
             text: "git",
