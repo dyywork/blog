@@ -75,7 +75,7 @@ export default sidebar({
             icon: "React",
             prefix: "/document/react/",
             collapsible: true,
-            children: ["howToLearn", "interview", "hook",  "higherComponent"],
+            children: ["howToLearn", "diff", "interview", "hook",  "higherComponent"],
         },
     ],
     '/document/js/': [
