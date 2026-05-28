@@ -82,6 +82,7 @@ export default navbar([
         prefix: "/document/react/",
         icon: "React",
         children: [
+            {text: "如何学习 React", icon: "bujufangshi", link: "howToLearn"},
             {text: "react 生命周期", icon: "shangpinshengmingzhouqi", link: "interview"},
             {text: "Hooks", icon: "hook", link: "hook"},
             {text: "高阶组件", icon: "zujian",  link: "higherComponent"},
