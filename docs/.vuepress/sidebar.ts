@@ -14,6 +14,12 @@ export default sidebar({
     '/document/': [
         '/',
         {
+            text: "工具笔记",
+            icon: "tools-hardware",
+            prefix: "/document/tool/",
+            collapsible: true,
+            children: ["Multirepo-与-Monorepo-简述"],
+        },{
             text: "正则表达式",
             icon: "run-in",
             prefix: "/document/regExp/",

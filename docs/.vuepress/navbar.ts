@@ -21,6 +21,13 @@ export default navbar([
         prefix: "/document/",
         children: [
             {
+                text: "工具",
+                prefix: "tool/",
+                children: [
+                    {text: "Multirepo 与 Monorepo", icon: "tools-hardware", link: "Multirepo-与-Monorepo-简述"},
+                ],
+            },
+            {
                 text: "CANVAS",
                 prefix: "canvas/",
                 children: [
