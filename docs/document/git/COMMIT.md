@@ -6,6 +6,8 @@ category:
 tag:
 - reset
 - tag
+- worktree
+- stash
 ---
 
 # Git 命令
@@ -132,6 +134,92 @@ git tag -a '标签名' `commitId` # 添加之前版本新标签
  git push origin --delete <tagname> # 删除远程标签
 ```
 
+## 暂存未完成的工作（stash）
+
+开发到一半需要切换分支，但改动还不想提交时，可以用 `stash` 临时保存：
+
+```shell
+git stash              # 保存当前未提交的改动
+git stash push -m "wip" # 带说明保存
+git stash list         # 查看暂存列表
+git stash apply        # 还原最近一次，保留 stash 记录
+git stash pop          # 还原并清除最近一次
+git stash drop         # 删除指定 stash
+git stash clear        # 清空所有 stash
+```
+
+::: tip stash vs worktree
+`stash` 适合「暂时存一下改动再切分支」；`worktree` 适合「两个分支要同时开着干活」。两者可以配合使用。
+:::
+
+## 多目录并行开发（worktree）
+
+`git worktree` 让你在**同一个仓库里，同时检出多个分支到不同工作目录**，不用反复 `git checkout` 或再 `git clone` 一份。
+
+关联的 worktree 共享同一个 `.git` 对象库，各自有独立目录和检出分支，改动、提交会实时同步。
+
+```shell
+# 新建 worktree 并检出分支
+git worktree add ../blog-feature feature-branch
+
+# 新建分支并检出
+git worktree add -b hotfix-123 ../blog-hotfix
+
+git worktree list              # 查看所有 worktree
+git worktree remove ../blog-feature  # 删除
+git worktree prune             # 清理失效记录
+```
+
+| 场景 | 为什么用 worktree |
+|------|-------------------|
+| 开发 feature 时突然要修线上 bug | 另一个目录直接切 `main`，不用 stash |
+| 同时跑两个分支的 dev server | 各目录独立 `npm run dev`，互不干扰 |
+| Code review | 单独目录检出 PR 分支，不影响当前工作区 |
+
+::: warning 注意
+1. **同一分支不能同时在多个 worktree 检出**
+2. 删除时优先用 `git worktree remove`，不要只 `rm -rf` 目录
+3. 与 `git clone` 不同：worktree 共享 `.git`，更省磁盘、状态实时同步
+:::
+
+## 摘取提交（cherry-pick）
+
+把某次（或某几次）commit 应用到当前分支，常用于「只拿别的分支某一个修复」：
+
+```shell
+git cherry-pick <commitHash>           # 摘取单个提交
+git cherry-pick <hash1> <hash2>        # 摘取多个
+git cherry-pick <startHash>..<endHash> # 摘取一段（不含 start）
+```
+
+若有冲突，解决后 `git add` 再 `git cherry-pick --continue`；放弃则 `git cherry-pick --abort`。
+
+## 代码追溯
+
+```shell
+git blame <file>              # 查看每行最后是谁、哪次提交修改的
+git log --oneline --graph     # 图形化查看提交历史
+git bisect start              # 二分查找引入 bug 的提交
+git bisect bad                # 标记当前版本有问题
+git bisect good <commitHash>  # 标记某个旧版本正常
+# Git 会自动 checkout 中间版本，重复 good/bad 直到定位
+git bisect reset              # 结束并回到原分支
+```
+
+`git reflog` 可找回「以为丢了」的 commit（见上文版本回退）。
+
+## 钩子（hooks）
+
+Git 在特定操作时自动执行脚本，常见钩子放在 `.git/hooks/`：
+
+| 钩子 | 触发时机 |
+|------|----------|
+| `pre-commit` | 提交前，常用于 lint、测试 |
+| `commit-msg` | 校验提交信息格式 |
+| `pre-push` | 推送前检查 |
+
+团队常用 [husky](https://typicode.github.io/husky/) 管理 hooks。绕过单次检查：`git commit --no-verify`。
+
 ## 命令列表
 
 ::: info Git
@@ -152,8 +240,8 @@ git tag -a '标签名' `commitId` # 添加之前版本新标签
 |`git tag`  |查看标签|
 |`git tag -a '标签名'`  |添加新标签|
 |`git tag -a '标签名' -m '附注'`  |添加附注新标签|
-|`git tag -a '标签名'`commitId`  |添加之前版本新标签|
-|`git stash`  |代码放进暂存区（未被commit的代码）|
+|`git tag -a '标签名' <commitId>`  |添加之前版本新标签|
+|`git stash`  |临时保存未提交的改动|
 |`git stash apply` |还原|
 |`git stash drop` |清除最近一次的stash记录|
 |`git stash pop` |还原并清除最近一次stash|
@@ -163,5 +251,11 @@ git tag -a '标签名' `commitId` # 添加之前版本新标签
 |`git remote add 'url'`   |添加一个远程仓库|
 |`git remote rm 'name'`   |删除一个远程仓库|
 |`git remote rename 'old_name' 'new_name'`   |修改仓库名|
+|`git cherry-pick <commit>` |摘取指定提交到当前分支|
+|`git blame <file>` |查看文件每行最后修改记录|
+|`git bisect start/good/bad` |二分查找引入 bug 的提交|
+|`git worktree add <path> [branch]` |新建 worktree 并行检出分支|
+|`git worktree list` |列出所有 worktree|
+|`git worktree remove <path>` |删除指定 worktree|
 
 :::

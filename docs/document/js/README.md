@@ -1,33 +1,66 @@
 ---
 date: 2022-01-12
 category:
-- javascript
+  - javascript
 tag:
-- 垃圾回收
-- 变量提升
+  - 垃圾回收
+  - 变量提升
+  - 防抖节流
+  - 运算符
 ---
 
 # JavaScript 杂项
 
-## js 运算符
+本文整理 JS 中零散但常用的知识点：运算符、类型转换、变量声明、精度、防抖节流、垃圾回收等。`this`、面向对象、事件循环、设计模式见同目录其他文档。
 
-- `??` 逻辑运算符，当左侧的操作数为 `null` 和 `undefined` 时，返回其右侧操作数，否则返回左侧操作数
+## 1. 运算符
 
-``` js
-const bar = null ?? 1 // 1 
-const bar = undefined ?? 1 // 1 
-const bar = 0 ?? 1 // 0 
+### 空值合并 `??` 与逻辑或 `||`
+
+| 运算符 | 左侧为假时返回右侧 | 「假值」范围 |
+|:-------|:-------------------|:-------------|
+| `??` | 仅 `null`、`undefined` | 不含 `0`、`''`、`false` |
+| `\|\|` | 所有假值 | `null`、`undefined`、`0`、`''`、`false`、`NaN` |
+
+```js
+null ?? 1        // 1
+undefined ?? 1   // 1
+0 ?? 1           // 0（0 不是 nullish）
+
+null || 1        // 1
+0 || 1           // 1（0 是假值）
+'' || 'default'  // 'default'
 ```
 
-- `||` 逻辑运算符，当左侧的操作数为 `false` 时，返回其右侧操作数，否则返回左侧操作数;能够转化为false 的表达式 `null` 、`NaN` 、 `0` 、 `空字符串` 、 `undefined`
+### 可选链 `?.`
 
-``` js
-const bar = null || 1 // 1 
-const bar = undefined || 1 // 1 
-const bar = 0 || 1 // 1 
+安全访问深层属性，遇 `null` / `undefined` 短路返回 `undefined`，不抛错：
+
+```js
+const user = { profile: { name: "Tom" } };
+
+user?.profile?.name;     // Tom
+user?.address?.city;     // undefined
+user?.getName?.();       // 方法可选调用
+
+// 与 ?? 配合设置默认值
+const city = user?.address?.city ?? "未知";
 ```
 
-## javascript 运算
+### 逻辑赋值
+
+```js
+let a = null;
+a ??= 1;   // a = 1，仅 null/undefined 时赋值
+
+let b = 0;
+b ||= 2;   // b = 2
+
+let c = 1;
+c &&= 0;   // c = 0
+```
+
+### 运算符总览
 
 ```mermaid
 ---
@@ -35,26 +68,75 @@ title: javascript 运算
 ---
 %%{init: {"flowchart": {"htmlLabels": false}} }%%
 flowchart LR
-   javascript运算 --> 1[算数运算 + - * / % ++ --] & 2["`比较运算 > < >= <= == !== === !==`"] & 3["`逻辑运算 && || ! ?:`"] 
-   1 --> 1.0[转化成原始类型] --> 1.1[转换成数字，然后计算] & 1.2["`特殊情况：x+y, x和y有一个是字符串。转换为字符串，然后拼接`"] & 1.3["`特殊情况：NaN和任何类型运算得到的还是NaN`"]
-   2 --> a["`> < >= <=`"] --> 2.0[转化成原始类型] --> 2.1[转换成数字，然后比较] & 2.2["`特殊情况：两端全是字符串，比较字典顺序`"] & 2.3["`特殊情况：两端存在NaN, 一定为false`"]
-   2 --> b["`===`"] --> b.1[类型和值必须都相同] & b.2["`特殊情况：两端存在NaN, 一定为false`"]
-   2 --> c["`==`"] --> c.1[两端类型相同，比较值] & c.2[两端都是原始类型，转成数字比较] & c.3[一端是原始类型，一端是对象类型，把对象类型转成原始类型后比较] & c.4["`特殊情况：undefined 和 null只有与自身比较，或者相互比较时，才会返回true`"] & c.5["`特殊情况：两端存在NaN, 一定为false`"]
+   javascript运算 --> 1[算数运算 + - * / % ++ --] & 2["`比较运算 > < >= <= == != ===`"] & 3["`逻辑运算 && || ! ?:`"]
+   1 --> 1.0[转化成原始类型] --> 1.1[转换成数字，然后计算] & 1.2["`特殊情况：x+y 有一端是字符串 → 转字符串拼接`"] & 1.3["`NaN 与任何类型运算结果仍是 NaN`"]
+   2 --> a["`> < >= <=`"] --> 2.0[转化成原始类型] --> 2.1[转换成数字，然后比较] & 2.2["`两端全是字符串 → 字典序比较`"] & 2.3["`存在 NaN → false`"]
+   2 --> b["`===`"] --> b.1[类型和值必须都相同] & b.2["`存在 NaN → false`"]
+   2 --> c["`==`"] --> c.1[类型相同比较值] & c.2[原始类型转数字比较] & c.3[对象先转原始类型再比较] & c.4["`null 与 undefined 互相 == 为 true`"] & c.5["`存在 NaN → false`"]
    2 --> d["`!= !==`"] --> d.1["`对相等取反`"]
-   3 --> 3.0[转换为Boolean] --> e.1["`x && y`"] --> e.1.1["x为false,返回x"] & e.1.2[x为true,返回y]
-   3.0 --> f.1["`x || y`"] --> f.1.1["x为true,返回x"] & f.1.2[x为false,返回y]
+   3 --> 3.0[转换为 Boolean] --> e.1["`x && y`"] --> e.1.1["x 为 false → 返回 x"] & e.1.2["x 为 true → 返回 y"]
+   3.0 --> f.1["`x || y`"] --> f.1.1["x 为 true → 返回 x"] & f.1.2["x 为 false → 返回 y"]
 ```
 
-## 数字格式化
+## 2. 类型转换
+
+### 原始类型与引用类型
+
+| 类型 | 示例 | 存储 |
+|:-----|:-----|:-----|
+| `number` | `42`, `NaN` | 栈（值） |
+| `string` | `'hi'` | 栈 |
+| `boolean` | `true` | 栈 |
+| `undefined` | `undefined` | 栈 |
+| `null` | `null` | 栈 |
+| `symbol` | `Symbol()` | 栈 |
+| `bigint` | `1n` | 栈 |
+| `object` | `{}`, `[]` | 栈存引用，堆存对象 |
+
+### 显式与隐式转换
 
 ```js
-const str = '10000000000.3782'
-// 1,000,000,000,000.3,782
-const num = str.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-console.log(num) //  10,000,000,000.3,782
+Number("42");    // 42
+Number("");      // 0
+Number("abc");   // NaN
+
+String(123);     // "123"
+Boolean(0);      // false
+Boolean("0");    // true（非空字符串为真）
+
+// 隐式：== 、 + 、 if 条件等触发
+"5" - 2;         // 3
+"5" + 2;         // "52"
 ```
 
-## 数字转中文
+### typeof 与 instanceof
+
+```js
+typeof 42;           // "number"
+typeof null;         // "object"（历史遗留 bug）
+typeof [];           // "object"
+Array.isArray([]);   // true（区分数组）
+
+[] instanceof Array;  // true
+```
+
+## 3. 数字格式化
+
+```js
+const str = "10000000000.3782";
+// 千分位：从右向左每 3 位加逗号
+const formatted = str.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+console.log(formatted); // 10,000,000,000.3782
+```
+
+内置 API：
+
+```js
+(1234567.89).toLocaleString("zh-CN"); // "1,234,567.89"
+new Intl.NumberFormat("zh-CN").format(1234567.89);
+```
+
+## 4. 数字转中文
 
 ::: normal-demo 数字转中文
 
@@ -96,7 +178,6 @@ function numToChinese(num, type) {
     
     const map = ["零",'一','二','三','四','五','六','七','八','九'];
     const units = ['','十','百','千']
-    // 处理小数点
     function _setChinesePoint(p) {
         if (!type) {
             return '点' + p.split('').map(n => map[n]).join('') 
@@ -113,11 +194,9 @@ function numToChinese(num, type) {
         chinesePoint = _removeZero(chinesePoint)
         return '元' + chinesePoint
     }
-    // 删除多余的零
     function _removeZero(n) {
         return n.replace(/零+/, '零').replace(/零$/, '')
     }
-    // 转换成中文
     function _transformChinese(n) {
         let result = '';
         for (let i = 0; i < n.length; i++) {
@@ -132,7 +211,6 @@ function numToChinese(num, type) {
         return result
     }
     const bigUnit = ['','万','亿','万亿','亿亿','万亿亿']
-    // 循环添加单位
     for (let i = 0; i < temp.length; i++) {
         const p = temp[i];
         let c =  _transformChinese(p)
@@ -214,196 +292,286 @@ p{
 
 :::
 
-## let,const
+## 5. let、const 与 var
 
-- let 声明的变量只在let命令所在的代码块内有效
-- const 声明一个只读的常量，一旦声明，常量的值不能改变
+| | `var` | `let` | `const` |
+|:--|:------|:------|:--------|
+| 作用域 | 函数 | 块级 | 块级 |
+| 变量提升 | 提升，初始化为 `undefined` | 提升但处于 TDZ | 同 `let` |
+| 重复声明 | 允许 | 不允许 | 不允许 |
+| 修改绑定 | 允许 | 允许 | 不允许（对象属性可改） |
 
-:::info var, let
+```js
+// 暂时性死区（TDZ）：声明前访问 let/const 会报错
+console.log(a); // undefined（var 提升）
+var a = 1;
 
-- 使用var关键字声明的全局作用域变量属于 window对象；
-- 使用let关键字声明的全局作用域变量不属于window 对象；
-- var 关键字定义的变量可以使用后声明，也就是变量可以先使用在声明（变量提升）
-- let 关键字定义的变量不可以在使用后声明，也就是变量需要先声明再使用
-- const 用于声明一个或多个常量，声明时必须进行初始化，切初始化后值不可在修改；
+// console.log(b); // ReferenceError
+let b = 2;
 
+const obj = { x: 1 };
+obj.x = 2;       // 可以改属性
+// obj = {};     // TypeError：不能改绑定
+```
+
+::: info var vs let
+- `var` 声明的全局变量属于 `window`（浏览器）；`let` / `const` 不属于。
+- `var` 可先使用后声明；`let` / `const` 必须先声明。
+- `const` 声明时必须初始化，绑定不可再改。
 :::
 
-## JavaScript 精确度问题
+## 6. 精度问题
 
-- JavaScript中数字是使用64位双精度浮点型来表示的， 精度问题都是由于浮点数无法精确表示引起的
-- 目前比较成熟的库，比如 [bignumber.js](https://github.com/MikeMcl/bignumber.js)，[decimal.js](https://github.com/MikeMcl/decimal.js)，以及[big.js](https://github.com/MikeMcl/big.js)等
+JavaScript 数字为 **IEEE 754 双精度浮点数**，部分十进制小数无法精确表示：
 
-## 变量提升
+```js
+0.1 + 0.2;              // 0.30000000000000004
+(0.1 + 0.2) === 0.3;    // false
 
-JavaScript在执行之前会有一个 `预编译` 过程，变量提升和函数提升就在这时候发生。[具体介绍](https://www.runoob.com/js/js-hoisting.html)
+// 简单处理（展示用，非金融级）
+(0.1 + 0.2).toFixed(1); // "0.3"
+Number((0.1 + 0.2).toFixed(10)); // 0.3
+```
 
-:::info 变量提升
+金额计算推荐库：[bignumber.js](https://github.com/MikeMcl/bignumber.js)、[decimal.js](https://github.com/MikeMcl/decimal.js)、[big.js](https://github.com/MikeMcl/big.js)。
 
-- javaScript中，函数及变量的声明都会被提升到函数的最顶部；
-- javaScript中，变量可以在使用后声明，也就是变量可以先使用在声明；
-- JavaScript 初始化不会提升，只有声明的变量会提升；
-- JavaScript中，函数声明比变量提升先，就是说，先函数提升，在变量提升。
-- JavaScript中，变量的搜索顺序：找变量时，先找局部变量，如果没有局部变量；再找全局变量；
+## 7. 变量提升
 
+执行前有**预编译**阶段，声明会被提升（[详细介绍](https://www.runoob.com/js/js-hoisting.html)）。
+
+```js
+console.log(foo); // undefined（var 提升）
+var foo = 1;
+
+bar(); // "bar"（函数声明整体提升）
+function bar() {
+  console.log("bar");
+}
+
+console.log(baz); // undefined（var 提升的是变量，不是赋值）
+var baz = function () {
+  console.log("baz");
+};
+```
+
+::: info 提升规则
+- 只有**声明**提升，**赋值**不提升。
+- **函数声明**优先于 **var** 提升。
+- `let` / `const` 也会提升，但在声明前处于 TDZ，访问会报错。
+- 找变量：当前作用域 → 外层作用域 → 全局。
 :::
 
-## 防抖&节流
+## 8. 深浅拷贝
 
-优化高频率执行代码的一种手段，可以防止函数被多次调用。
+```js
+const original = { a: 1, b: { c: 2 }, d: [3] };
+
+// 浅拷贝：只复制第一层
+const shallow1 = { ...original };
+const shallow2 = Object.assign({}, original);
+shallow1.b.c = 99;
+console.log(original.b.c); // 99（嵌套对象仍共享引用）
+
+// 深拷贝
+const deep1 = structuredClone(original); // 现代 API，推荐
+const deep2 = JSON.parse(JSON.stringify(original)); // 简单场景，不支持 Date/函数/undefined
+```
+
+| 方法 | 深度 | 注意 |
+|:-----|:-----|:-----|
+| 展开 `...` / `Object.assign` | 浅 | 嵌套引用共享 |
+| `structuredClone` | 深 | 不支持 DOM、部分内置对象 |
+| `JSON` 序列化 | 深 | 丢失函数、`undefined`、循环引用报错 |
+
+## 9. 防抖与节流
+
+优化高频回调，降低执行次数。
 
 ::: tip 区别
+**相同点**：都通过 `setTimeout` 等控制执行频率，减少资源消耗。
 
-1、相同点
-
-- 防抖和节流都是为了防止函数被多次调用，降低回调执行频率，减少资源消耗。
-- 都可以通过setTimeout() 来实现，通过定时器来控制函数的执行频率。
-
-2、不同点
-
-- 防抖，在一段连续操作结束后，处理回调，利用clearTimeout() 来清除定时器，避免重复执行回调。节流在一段连续操作中，每一段时间只执行一次，  
-频率较高的事件中使用来提高性能
-- 防抖关注一定时间连续触发的事件，只在最后执行一次，而节流一段时间内只执行一次；
-
+**不同点**：
+- **防抖**：连续触发时只认最后一次，适合「输入结束再请求」。
+- **节流**：固定时间窗口内最多执行一次，适合「滚动、拖拽」。
 :::
 
 ::: tip 应用场景
+**防抖**：搜索框输入、表单校验、`resize` 结束后布局计算。
 
-1、防抖只触发一次场景
-
-- 搜索框输入搜索，只需用户最后一次输入玩，在发送搜索请求
-- 手机号，邮箱输入校验
-- 窗口大小 `resize`。只需要窗口调整完成后，计算窗口大小，防止重复渲染；
-
-2、节流间隔一段时间执行一次的场景
-
-- 滚动加载，加载更多或滚动到底部监听
-- 搜索框，搜索联想功能
-
+**节流**：滚动加载、鼠标移动、按钮连点防护。
 :::
 
 ### 防抖
 
-::: tip 定义
-防抖: n 秒后在执行该事件，若在 n 秒内被重复触发，则重新计时间
-:::
-
-简单实现
+n 秒后再执行；n 秒内再次触发则重新计时。
 
 ```js
-function debounce(func, wait) {
-    let timeout;
-    return function () {
-        let context = this; // 保存this指向
-        let args = arguments; // 拿到event对象
-
-        clearTimeout(timeout)
-        timeout = setTimeout(function(){
-            func.apply(context, args)
-        }, wait);
+function debounce(func, wait, immediate = false) {
+  let timeout;
+  return function (...args) {
+    const context = this;
+    clearTimeout(timeout);
+    if (immediate) {
+      const callNow = !timeout;
+      timeout = setTimeout(() => { timeout = null; }, wait);
+      if (callNow) func.apply(context, args);
+    } else {
+      timeout = setTimeout(() => func.apply(context, args), wait);
     }
-}
-```
-
-需要立即执行
-
-```js
-function debounce(func, wait, immediate) {
-    let timeout;
-    return function () {
-        let context = this; // 保存this指向
-        let args = arguments; // 拿到event对象
-        if (timeout) clearTimeout(timeout)
-        if (immediate) {
-            let callNow = immediate && !timeout;
-            timeout = setTimeout(function(){
-                timeout = null
-            }, wait)
-            if (callNow) func.apply(context, args)
-        }else {
-            timeout = setTimeout(function(){
-                func.apply(context, args)
-            }, wait)
-        }
-    }
+  };
 }
 ```
 
 ### 节流
 
-::: tip 定义
-节流: n 秒内只运行一次，若在 n 秒内重复触发，只有一次生效
-:::
+n 秒内只执行一次。
 
-使用时间戳写法，事件会立即执行，停止触发后没有办法再次执行
+**时间戳版**：首次立即执行，结束后无法 trailing 执行。
 
 ```js
 function throttle(func, wait) {
-    let oldTime = Date.now();
-    return function (...args) {
-        let nowTime = Date.now();
-        if (nowTime - oldTime > wait) {
-            func.apply(null, args)
-            oldTime = Date.now()
-        }
+  let last = 0;
+  return function (...args) {
+    const now = Date.now();
+    if (now - last >= wait) {
+      last = now;
+      func.apply(this, args);
     }
+  };
 }
 ```
 
-使用定时器写法，事件不会立即执行，停止触发后可以再次执行
+**定时器版**：首次延迟，停止触发后还能执行一次。
 
 ```js
-function throttle(fn, delay = 500) {
-    let timer = null
-    return function (...args) {
-        if (!timer) {
-            timer = setTimeout(() => {
-                fn.apply(this, args)
-                timer = null
-            }, delay);
-        }
+function throttleTimer(fn, delay = 500) {
+  let timer = null;
+  return function (...args) {
+    if (!timer) {
+      timer = setTimeout(() => {
+        fn.apply(this, args);
+        timer = null;
+      }, delay);
     }
+  };
 }
 ```
 
-两者结合
+**结合版**：首击立即 + 停止后 trailing。
 
 ```js
 function throttle(fn, delay) {
-    let timer = null
-    let starttime = Date.now()
-    return function () {
-        let curTime = Date.now() // 当前时间
-        let remaining = delay - (curTime - starttime)  // 从上一次到现在，还剩下多少多余时间
-        let context = this
-        let args = arguments
-        clearTimeout(timer)
-        if (remaining <= 0) {
-            fn.apply(context, args)
-            starttime = Date.now()
-        } else {
-            timer = setTimeout(fn, remaining);
-        }
+  let timer = null;
+  let start = Date.now();
+  return function (...args) {
+    const remaining = delay - (Date.now() - start);
+    clearTimeout(timer);
+    if (remaining <= 0) {
+      fn.apply(this, args);
+      start = Date.now();
+    } else {
+      timer = setTimeout(() => {
+        fn.apply(this, args);
+        start = Date.now();
+      }, remaining);
     }
+  };
 }
 ```
 
-## 垃圾回收
+## 10. 严格模式
 
-### 1.标记清除
+在文件或函数顶部加 `"use strict"`，启用更严格的语法与错误检查：
 
-`“标记清除”` 是目前主流的垃圾收集算法，这种算法的思想就是给当前不使用的值加上标记，然后再回收其内存
+```js
+"use strict";
 
-### 2.引用计数
+// 禁止未声明变量赋值
+// x = 1; // ReferenceError
 
-`“引用计数”`跟踪记录所有值被引用的次数
-（注： `JavaScript`引擎目前都不在使用这种算法，当代码中存在循环引用现象时，`‘引用计数’`算法会导致问题）
+// 禁止重复参数名
+// function f(a, a) {} // SyntaxError
 
-### 3.优化
+// 独立函数调用 this 为 undefined
+function show() {
+  console.log(this); // undefined（非严格模式为 global）
+}
+```
 
-解除变量的引用不仅有助于消除循环引用现象，而且对垃圾收集也有好处。为了确保有效地回收内存，应该
-及时解除不再使用的全局对象，全局对象属性以及循环引用变量的引用。
+## 11. 模块化
 
-### 4.小计
+| | CommonJS | ES Module |
+|:--|:---------|:----------|
+| 语法 | `require` / `module.exports` | `import` / `export` |
+| 加载 | 运行时 | 编译时静态分析 |
+| 值 | 拷贝导出值 |  live binding |
+| 环境 | Node.js 传统 | 现代 Node + 浏览器 |
 
-函数内的变量在函数执行完之后，变量所占内存就会释放
+```js
+// ESM
+export const PI = 3.14;
+export default function add(a, b) { return a + b; }
+
+import add, { PI } from "./math.js";
+```
+
+## 12. 垃圾回收
+
+JS 自动管理堆内存，开发者无法手动 `free`，但可通过解除引用帮助回收。
+
+### 标记清除（Mark-Sweep）
+
+目前主流算法：从根对象（全局、调用栈引用）出发标记可达对象，未标记的视为垃圾并回收。
+
+### 引用计数（已淘汰）
+
+记录值被引用次数，为 0 时回收。**循环引用**会导致内存泄漏，现代引擎不再单独使用。
+
+```js
+// 循环引用示例（标记清除可处理，但引用仍应主动断开）
+let a = {};
+let b = {};
+a.ref = b;
+b.ref = a;
+a = null;
+b = null; // 断开根引用，等待 GC
+```
+
+### 分代回收（V8 简述）
+
+- **新生代**：存活时间短的对象，Scavenge 算法，复制存活对象。
+- **老生代**：长期存活对象，标记清除 + 标记整理。
+
+### 常见泄漏场景
+
+- 未清理的定时器 / 事件监听
+- 闭包持有大对象
+- 脱离 DOM 的节点仍被 JS 引用
+- 全局变量累积
+
+```js
+// 及时清理
+const handler = () => { /* ... */ };
+window.addEventListener("resize", handler);
+// 组件销毁时：
+window.removeEventListener("resize", handler);
+```
+
+::: info 小记
+- 函数执行完，其局部变量一般可被回收（若无闭包引用）。
+- 全局对象、闭包、DOM 引用是泄漏高发区，不再需要时置 `null` 或解除监听。
+:::
+
+## 13. 速查
+
+| 主题 | 要点 |
+|:-----|:-----|
+| `??` vs `\|\|` | `??` 只认 null/undefined；`\|\|` 认所有假值 |
+| `?.` | 安全访问属性/方法 |
+| TDZ | `let`/`const` 声明前不可访问 |
+| `0.1+0.2` | 浮点精度，金额用专用库 |
+| 防抖 | 最后一次生效 |
+| 节流 | 固定间隔生效 |
+| 浅拷贝 | `...`、`Object.assign` |
+| 深拷贝 | `structuredClone`、JSON |
+| GC | 标记清除；断开无用引用 |

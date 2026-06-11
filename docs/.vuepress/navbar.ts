@@ -46,6 +46,7 @@ export default navbar([
                 prefix: "git/",
                 children: [
                     {text: "Git 命令",icon: "git", link: "COMMIT"},
+                    {text: "Branch 分支", icon: "git", link: "branch"},
                 ],
             },
             {
