@@ -18,7 +18,7 @@ export default sidebar({
             icon: "tools-hardware",
             prefix: "/document/tool/",
             collapsible: true,
-            children: ["Multirepo-与-Monorepo-简述"],
+            children: ["Multirepo-与-Monorepo-简述", "blog-note-skill"],
         },{
             text: "正则表达式",
             icon: "run-in",

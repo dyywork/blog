@@ -25,6 +25,7 @@ export default navbar([
                 prefix: "tool/",
                 children: [
                     {text: "Multirepo 与 Monorepo", icon: "tools-hardware", link: "Multirepo-与-Monorepo-简述"},
+                    {text: "Claude Code Skill: blog-note", icon: "tools-hardware", link: "blog-note-skill"},
                 ],
             },
             {
@@ -70,9 +71,12 @@ export default navbar([
         icon: "js",
         prefix: "/document/js/",
         children: [
-            {text: "this",icon: "text",link: "THIS"},
-            {text: "面向对象",icon:"duixiangmoxing",  link: "Object"},
-            {text: "Javascript 杂项", icon:"sharethis",  link: "README.md"},
+            {text: "this", icon: "text", link: "THIS"},
+            {text: "面向对象", icon: "duixiangmoxing", link: "Object"},
+            {text: "JavaScript 杂项", icon: "sharethis", link: "README.md"},
+            {text: "设计模式", icon: "layers", link: "designModel"},
+            {text: "js 原生小效果", icon: "huodongzhanshi", link: "jsShow"},
+            {text: "事件循环", icon: "data-view", link: "eventLoop"},
         ],
     },
     {
