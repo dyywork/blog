@@ -121,6 +121,21 @@ export default navbar([
         ]
     },
     {
+        text: "Java小记",
+        icon: 'Java',
+        prefix: "/document/java/",
+        children: [
+            {text: "学习路线总览", icon: "bujufangshi", link: "index"},
+            {text: "基础语法（对比JS）", icon: "text", link: "hello-java"},
+            {text: "面向对象（对比JS）", icon: "duixiangmoxing", link: "oop"},
+            {text: "集合框架", icon: "data-view", link: "collection"},
+            {text: "Lambda & Stream", icon: "layers", link: "lambda-stream"},
+            {text: "异常处理 & I/O", icon: "bug", link: "exception-io"},
+            {text: "Maven（对比npm）", icon: "tools-hardware", link: "maven"},
+            {text: "Spring Boot（对比Express）", icon: "React", link: "spring-boot"},
+        ]
+    },
+    {
         text: "软考小记",
         icon: 'CSS-copy',
         prefix: "/document/softExamination/",

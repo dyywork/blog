@@ -94,6 +94,16 @@ export default sidebar({
             children: ["THIS", "Object",'README.md','designModel.md', 'jsShow.md',"eventLoop.md"],
         },
     ],
+    '/document/java/': [
+        '/',
+        {
+            text: "Java学习笔记",
+            icon: "Java",
+            prefix: "/document/java/",
+            collapsible: true,
+            children: ["index", "hello-java", "oop", "collection", "lambda-stream", "exception-io", "maven", "spring-boot"],
+        },
+    ],
     '/document/softExamination/': [
         '/',
         {
