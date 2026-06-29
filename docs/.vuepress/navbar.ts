@@ -151,6 +151,21 @@ export default navbar([
         ]
     },
     {
+        text: "Redis小记",
+        icon: "redis",
+        prefix: "/document/redis/",
+        children: [
+            {text: "学习路线总览", icon: "bujufangshi", link: "index"},
+            {text: "五种数据类型", icon: "data-view", link: "data-types"},
+            {text: "常用命令 & 过期", icon: "text", link: "commands"},
+            {text: "缓存实战", icon: "layers", link: "cache"},
+            {text: "Session & 分布式", icon: "security", link: "session"},
+            {text: "发布订阅 Pub/Sub", icon: "sharethis", link: "pub-sub"},
+            {text: "持久化 & 主从", icon: "tools-hardware", link: "persistence"},
+            {text: "Node.js 操作 Redis", icon: "React", link: "node-redis"},
+        ]
+    },
+    {
         text: "软考小记",
         icon: 'CSS-copy',
         prefix: "/document/softExamination/",

@@ -114,6 +114,16 @@ export default sidebar({
             children: ["index", "sql-basics", "query", "join", "function", "index-transaction", "table-design", "node-mysql"],
         },
     ],
+    '/document/redis/': [
+        '/',
+        {
+            text: "Redis学习笔记",
+            icon: "redis",
+            prefix: "/document/redis/",
+            collapsible: true,
+            children: ["index", "data-types", "commands", "cache", "session", "pub-sub", "persistence", "node-redis"],
+        },
+    ],
     '/document/softExamination/': [
         '/',
         {
