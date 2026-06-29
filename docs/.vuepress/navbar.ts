@@ -136,6 +136,21 @@ export default navbar([
         ]
     },
     {
+        text: "MySQL小记",
+        icon: "mysql",
+        prefix: "/document/mysql/",
+        children: [
+            {text: "学习路线总览", icon: "bujufangshi", link: "index"},
+            {text: "SQL基础 CRUD", icon: "text", link: "sql-basics"},
+            {text: "查询进阶 & 聚合", icon: "data-view", link: "query"},
+            {text: "多表 JOIN", icon: "layers", link: "join"},
+            {text: "常用函数", icon: "run-in", link: "function"},
+            {text: "索引 & 事务", icon: "security", link: "index-transaction"},
+            {text: "表设计", icon: "tools-hardware", link: "table-design"},
+            {text: "Node.js 操作 MySQL", icon: "React", link: "node-mysql"},
+        ]
+    },
+    {
         text: "软考小记",
         icon: 'CSS-copy',
         prefix: "/document/softExamination/",

@@ -104,6 +104,16 @@ export default sidebar({
             children: ["index", "hello-java", "oop", "collection", "lambda-stream", "exception-io", "maven", "spring-boot"],
         },
     ],
+    '/document/mysql/': [
+        '/',
+        {
+            text: "MySQL学习笔记",
+            icon: "mysql",
+            prefix: "/document/mysql/",
+            collapsible: true,
+            children: ["index", "sql-basics", "query", "join", "function", "index-transaction", "table-design", "node-mysql"],
+        },
+    ],
     '/document/softExamination/': [
         '/',
         {
