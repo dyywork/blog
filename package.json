@@ -22,8 +22,5 @@
   },
   "dependencies": {
     "@vuepress/bundler-vite": "2.0.0-rc.9"
-  },
-  "volta": {
-    "node": "18.20.2"
   }
 }
