@@ -111,7 +111,7 @@ export default sidebar({
             icon: "mysql",
             prefix: "/document/mysql/",
             collapsible: true,
-            children: ["index", "sql-basics", "query", "join", "function", "index-transaction", "table-design", "node-mysql"],
+            children: ["index", "sql-basics", "query", "join", "function", "index-transaction", "table-design", "node-mysql", "java-mysql"],
         },
     ],
     '/document/redis/': [
@@ -121,7 +121,7 @@ export default sidebar({
             icon: "redis",
             prefix: "/document/redis/",
             collapsible: true,
-            children: ["index", "data-types", "commands", "cache", "session", "pub-sub", "persistence", "node-redis"],
+            children: ["index", "data-types", "commands", "cache", "session", "pub-sub", "persistence", "node-redis", "java-redis"],
         },
     ],
     '/document/softExamination/': [

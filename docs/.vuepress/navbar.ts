@@ -148,6 +148,7 @@ export default navbar([
             {text: "索引 & 事务", icon: "security", link: "index-transaction"},
             {text: "表设计", icon: "tools-hardware", link: "table-design"},
             {text: "Node.js 操作 MySQL", icon: "React", link: "node-mysql"},
+            {text: "Java 操作 MySQL", icon: "Java", link: "java-mysql"},
         ]
     },
     {
@@ -163,6 +164,7 @@ export default navbar([
             {text: "发布订阅 Pub/Sub", icon: "sharethis", link: "pub-sub"},
             {text: "持久化 & 主从", icon: "tools-hardware", link: "persistence"},
             {text: "Node.js 操作 Redis", icon: "React", link: "node-redis"},
+            {text: "Java 操作 Redis", icon: "Java", link: "java-redis"},
         ]
     },
     {
