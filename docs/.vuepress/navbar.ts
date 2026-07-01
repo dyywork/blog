@@ -133,6 +133,7 @@ export default navbar([
             {text: "异常处理 & I/O", icon: "bug", link: "exception-io"},
             {text: "Maven（对比npm）", icon: "tools-hardware", link: "maven"},
             {text: "Spring Boot（对比Express）", icon: "React", link: "spring-boot"},
+            {text: "Java 文件后缀解析", icon: "layers", link: "file-extensions"},
         ]
     },
     {

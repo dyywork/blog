@@ -101,7 +101,7 @@ export default sidebar({
             icon: "Java",
             prefix: "/document/java/",
             collapsible: true,
-            children: ["index", "hello-java", "oop", "collection", "lambda-stream", "exception-io", "maven", "spring-boot"],
+            children: ["index", "hello-java", "oop", "collection", "lambda-stream", "exception-io", "maven", "spring-boot", "file-extensions"],
         },
     ],
     '/document/mysql/': [
